@@ -1,0 +1,26 @@
+:root {
+  --mono: 'GeistMono', Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.with-children {
+  font-family: var(--mono);
+  font-size: 14px;
+  color: white;
+  padding-inline: 1rem;
+  padding-block: 0.5rem;
+  transform: translateY(-40%);
+}
+
+.with-children::before {
+  content: '🧙🏻‍♂️';
+  margin-right: 0.5rem;
+}
+
+.custom-classname {
+  background-color: #222;
+  border: solid 1px #333;
+}
