@@ -54,8 +54,7 @@ const Fraction: React.FC<FractionProps> = ({ size, value }) => {
 
   return (
     <div
-      // @ts-expect-error - --color-display is a valid css variable
-      style={{ '--color-display': colorDisplay }}
+      style={{ '--color-display': colorDisplay } as React.CSSProperties}
       data-valueinrange={valueIsInRange}
       data-valueheight={size}
       className={classNames('fractional-range__fraction', fragmentClassName)}
