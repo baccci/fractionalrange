@@ -19,7 +19,6 @@
   flex-direction: column;
   align-items: flex-start;
   border-radius: 0.75rem;
-  width: 100%;
   background-color: #111111;
   user-select: none;
   --fraction-small-height: 0.5rem;
