@@ -8,7 +8,7 @@ export interface LabelProps extends React.DetailedHTMLProps<React.HTMLAttributes
 export const Label: React.FC<LabelProps> = ({ children, ...rest }) => {
   const { labelText } = useFractionalRangeContext()
   return (
-    <span {...rest}>
+    <span data-label {...rest}>
       {labelText}
       {children}
     </span>

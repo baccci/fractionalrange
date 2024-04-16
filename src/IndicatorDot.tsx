@@ -8,6 +8,7 @@ export const IndicatorDot: React.FC<IndicatorDotProps> = ({ className, ...rest }
   const { activeColor, disabled } = useFractionalRangeContext()
   return (
     <span
+      data-indicatordot
       className={cn('size-1 rounded-full absolute bottom-[10px] left-1/2 -translate-x-[25%]', className)}
       style={{ backgroundColor: !disabled ? activeColor || '#fff' : '#6d6d6d' }}
       {...rest}

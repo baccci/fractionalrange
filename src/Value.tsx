@@ -16,6 +16,7 @@ export const Value: React.FC<ValueProps> = ({ children, value: _value, className
 
   return (
     <div
+      data-value
       className={cn('flex gap-1', className)}
       {...rest}
     >

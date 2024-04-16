@@ -108,6 +108,7 @@ describe('FractionalRange', () => {
     const baseComponent = screen.getByTestId('fractional-range')
     const { indicator, shadowLeft, shadowRight, titlebar, value } = getLayoutNodes(baseComponent)
 
+    console.log({ indicator, shadowLeft, shadowRight, titlebar, value })
     expect(baseComponent).toBeDefined()
     expect(screen.getAllByText('Fractional Range')).toBeDefined()
     expect(indicator).toBeDefined()
@@ -174,17 +175,17 @@ describe('FractionalRange', () => {
   })
 })
 
-function findChildrenByClassName(children: HTMLCollection, className: string) {
+function findChildrenByDataAttribute(children: HTMLCollection, dataAttribute: string) {
   if (!children) return undefined
-  return Array.from(children).find(child => child.classList.contains(className))
+  return Array.from(children).find(child => child.hasAttribute(`data-${dataAttribute}`))
 }
 
 function getLayoutNodes(baseComponent: HTMLElement) {
-  const indicator = findChildrenByClassName(baseComponent.children, 'indicator-dot')
-  const shadowLeft = findChildrenByClassName(baseComponent.children, 'left')
-  const shadowRight = findChildrenByClassName(baseComponent.children, 'right')
-  const titlebar = findChildrenByClassName(baseComponent.children, 'titlebar')
-  const value = findChildrenByClassName(titlebar?.children, 'value')
+  const indicator = findChildrenByDataAttribute(baseComponent.children, 'indicatordot')
+  const shadowLeft = findChildrenByDataAttribute(baseComponent.children, 'shadowleft')
+  const shadowRight = findChildrenByDataAttribute(baseComponent.children, 'shadowright')
+  const titlebar = findChildrenByDataAttribute(baseComponent.children, 'titlebar')
+  const value = findChildrenByDataAttribute(titlebar?.children, 'value')
 
   return {
     indicator,

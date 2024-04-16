@@ -8,7 +8,8 @@ interface TitlebarProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTM
 export const Titlebar: React.FC<TitlebarProps> = ({ className, children, ...rest }) => {
   return (
     <div
-    className={cn('w-full flex justify-between font-mono px-6 mt-[-8px] text-sm mb-6 z-[2]', className)}
+      data-titlebar
+      className={cn('w-full flex justify-between font-mono px-6 mt-[-8px] text-sm mb-6 z-[2]', className)}
       {...rest}
     >
       {children}
