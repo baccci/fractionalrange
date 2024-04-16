@@ -18,7 +18,8 @@ export default {
     activeColor: '#ff9646',
     id: 'fractional-range',
     label: 'Fractional Range',
-    layout: 'full'
+    layout: 'full',
+    disableWillChange: false
   }
 }
 
@@ -54,12 +55,12 @@ export const LayoutNone = {
 
 export const WithChildren = {
   args: {
-    children: <div className='with-children'>children</div>
+    children: <div className='font-mono text-[14px] text-white px-4 py-2 translate-y-[-40%] before:[content:"🧙🏻‍♂️"] before:mr-2'>children</div>
   }
 }
 
 export const WithCustomClassname = {
   args: {
-    className: 'custom-classname'
+    className: 'bg-[#222] border border-[#333]'
   }
 }
