@@ -1,5 +1,5 @@
 import React from 'react'
-import classNames from 'classnames'
+import { cn } from './utils/tailwindClassMerge'
 import { useFractionalRangeContext } from './context'
 
 export interface ValueProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
@@ -16,7 +16,7 @@ export const Value: React.FC<ValueProps> = ({ children, value: _value, className
 
   return (
     <div
-      className={classNames('value', className)}
+      className={cn('flex gap-1', className)}
       {...rest}
     >
       {Component}

@@ -1,8 +1,9 @@
+import './style.css'
 import React from 'react'
 import useMeasure from 'react-use-measure'
 import Fractions from './Fractions'
 import getFractions from './utils/getFractions'
-import classNames from 'classnames'
+import { cn } from './utils/tailwindClassMerge'
 import { animated } from '@react-spring/web'
 import { useSound } from './hooks/useSound'
 import { IndicatorDot } from './IndicatorDot'
@@ -48,9 +49,10 @@ export const FractionalRange: FractionalRangeType = (props) => {
   return (
     <FractionalRangeContext.Provider value={fractionalContext}>
       <div
-        className={classNames(
-          'fractional-range__base',
-          { 'no-title': layout === 'none' || layout === 'shadows' },
+        className={cn(
+          'w-full overflow-hidden flex flex-col items-start relative py-6 px-0 bg-black rounded-xl border border-borderblack select-none isolate text-white',
+          '[--fraction-small-height:0.5rem] [--fraction-large-height:0.75rem]',
+          { 'pt-6 pb-3': layout === 'none' || layout === 'shadows' },
           className
         )}
         ref={wrapperRef}
@@ -60,7 +62,7 @@ export const FractionalRange: FractionalRangeType = (props) => {
           {children}
         </Layout>
         <animated.div
-          className={classNames('fractional-range__animated', { 'will-change-transform': !disableWillChange })}
+          className={cn('flex gap-1.5 items-end cursor-ew-resize pt-4 pb-2 focus-visible:outline-offset-[16px]', { 'will-change-transform': !disableWillChange })}
           role='slider'
           tabIndex={0}
           aria-label={ariaLabel}

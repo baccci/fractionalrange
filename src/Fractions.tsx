@@ -1,5 +1,5 @@
 import React from 'react'
-import classNames from 'classnames'
+import { cn } from './utils/tailwindClassMerge'
 import { numberToFixed } from './utils/numberToFixed'
 import { useFractionalRangeContext } from './context'
 import Decimal from 'decimal.js'
@@ -57,7 +57,11 @@ const Fraction: React.FC<FractionProps> = ({ size, value }) => {
       style={{ '--color-display': colorDisplay } as React.CSSProperties}
       data-valueinrange={valueIsInRange}
       data-valueheight={size}
-      className={classNames('fractional-range__fraction', fragmentClassName)}
+      className={cn(
+        'relative w-[1.5px] min-w-[1.5px] data-[valueheight="1"]:h-[var(--fraction-small-height)] data-[valueheight="2"]:h-[var(--fraction-large-height)] [transform:translateZ(0px)] touch-none bg-[var(--color-display)]',
+        'data-[valueinrange="false"]:opacity-50 data-[valueinrange="true"]:opacity-100',
+        fragmentClassName
+      )}
     >
       <FractionValueDisplay
         value={value}
@@ -82,7 +86,7 @@ const FractionValueDisplay = ({ value, showValue, color: _color }: FractionValue
   return (
     <span
       style={{ color }}
-      className={classNames('fractional-range__fraction__display')}
+      className={cn(`absolute top-[-24px] left-[50%] -translate-x-1/2 text-[12px] text-[${color}] select-none touch-none font-mono`)}
     >
       {fixedValue}
     </span>
