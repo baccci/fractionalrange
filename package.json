@@ -1,6 +1,6 @@
 {
   "name": "fractionalrange",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "An opinionated slider component with ticks for React.",
   "exports": {
     "types": "./dist/index.d.ts",
@@ -17,7 +17,8 @@
     "test:ui": "vitest --ui",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "build": "tsup src/index.ts",
+    "clean": "rm -rf dist",
+    "build": "npm run clean && tsup src/index.ts",
     "dev": "tsup src/index.ts --watch"
   },
   "keywords": [
