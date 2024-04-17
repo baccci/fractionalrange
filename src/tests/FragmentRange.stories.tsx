@@ -19,7 +19,8 @@ export default {
     id: 'fractional-range',
     label: 'Fractional Range',
     layout: 'full',
-    disableWillChange: false
+    disableWillChange: false,
+    disabled: false
   }
 }
 

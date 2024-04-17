@@ -106,10 +106,12 @@ function propsInjection(props: FractionalRangeProps & { boundsWidth: number, fra
     step,
     min,
     max,
+    disabled,
     ...rest
   } = props
 
   const useValuesArgs = {
+    disabled,
     initialValue,
     onChange,
     controlledValue: props.value,

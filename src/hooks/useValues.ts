@@ -12,25 +12,27 @@ const SPRING_CONFIG = {
 }
 
 interface UseFractionsArgs {
-  initialValue?: number
+  onChange?: (value: number) => void
   controlledValue?: number
-  boundsWidth: number
+  initialValue?: number
   fractionWidth: number
+  boundsWidth: number
   min: number
   max: number
   step: number
-  onChange?: (value: number) => void
+  disabled: boolean
 }
 
 export const useValues = ({
   initialValue: _initialValue,
   controlledValue,
-  boundsWidth,
   fractionWidth,
+  boundsWidth,
+  onChange,
+  disabled,
   min,
   max,
-  step,
-  onChange
+  step
 }: UseFractionsArgs) => {
   // reactive x is needed due to useSpring does not re-render while updating the x value
   // and the value related to x need to be calculated in every x change
@@ -42,7 +44,7 @@ export const useValues = ({
     onChange: ({ value }: { value: { x: number } }) => setReactiveX(value.x)
   }))
 
-  const api = useApi(springRef, x, step, min, max, boundsWidth, fractionWidth)
+  const api = useApi(springRef, x, step, min, max, boundsWidth, fractionWidth, disabled)
 
   const mounted = React.useRef(false)
   const initialValue = React.useRef(_initialValue ?? controlledValue ?? 0)
@@ -76,12 +78,13 @@ export const useValues = ({
   }
 }
 
-function useApi(springRef: SpringRef<{ x: number }>, x: SpringValue<number>, step: number, min: number, max: number, boundsWidth: number, fractionWidth: number) {
+function useApi(springRef: SpringRef<{ x: number }>, x: SpringValue<number>, step: number, min: number, max: number, boundsWidth: number, fractionWidth: number, disabled: boolean) {
   const minCoordinatePossible = React.useMemo(() => -1 * valueToCoordinate({ inputValue: min, boundsWidth, fractionWidth, min, max, step }), [boundsWidth, fractionWidth, min, max, step])
   const maxCoordinatePossible = React.useMemo(() => -1 * valueToCoordinate({ inputValue: max, boundsWidth, fractionWidth, min, max, step }), [boundsWidth, fractionWidth, min, max, step])
 
   const api = {
     setCoordinate: (x: number) => {
+      if (disabled) return
       const invertedX = -x
 
       // if the x is out of bounds, set the x to the nearest possible value
@@ -93,6 +96,7 @@ function useApi(springRef: SpringRef<{ x: number }>, x: SpringValue<number>, ste
       springRef.start({ x })
     },
     setValue: function (value: number) {
+      if (disabled) return
       const x = valueToCoordinate({ inputValue: value, boundsWidth, fractionWidth, min, max, step })
       this.setCoordinate(x)
     },
