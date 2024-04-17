@@ -1,5 +1,5 @@
 <div align="left" >
-  <img width="460" src="https://github.com/baccci/fractionalrange/blob/main/fractionalrange.png">
+  <img src="https://github.com/baccci/fractionalrange/blob/main/fractionalrange.png">
 </div>
 
 🎚️ An opinionated range slider component for React built with Tailwind CSS.
