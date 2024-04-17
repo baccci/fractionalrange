@@ -15,6 +15,7 @@ import { Value } from './Value'
 import { Shadows } from './Shadows'
 import { Layout } from './Layout'
 import { FractionalRangeContext, useFractionalRange } from './context'
+import { DEFAULT_MAX, DEFAULT_MIN, DEFAULT_STEP } from './constants'
 import type { FractionalRangeType, FractionalRangeProps } from './types'
 
 export const FractionalRange: FractionalRangeType = (props) => {
@@ -26,9 +27,9 @@ export const FractionalRange: FractionalRangeType = (props) => {
     className,
     children,
     label,
-    step,
-    max,
-    min
+    step = DEFAULT_STEP,
+    max = DEFAULT_MAX,
+    min = DEFAULT_MIN
   } = props
 
   const [wrapperRef, { width: boundsWidth }] = useMeasure()
