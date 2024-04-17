@@ -121,7 +121,7 @@ export function App() {
   <td>string | ReactNode</td>
   <td>undefined</td>
   <td>
-    A string or React component that specifies what's the component about or its porpouse. If this property is set as a string, will be used for screen readers. Otherwise, you need to specify also a aria-label property.
+    A string or React component that specifies the component's purpose. If this property is set as a string, it will be used for screen readers. Otherwise, you also need to specify an aria-label property.
   </td>
 </tr>
 <tr>
@@ -195,14 +195,17 @@ export function App() {
   <td>string</td>
   <td>undefined</td>
   <td>
-    Class name to be set for each tick. 
+    Class name to be applied to each tick element. 
   </td>
 </tr>
 </table>
 
-*Properties with an `'?'` are optional.*
+*Properties marked with an `'?'` are optional.*
 
 ## Documentation
 Full documentation soon.
+
+## Contribute
+You're wellcome to contribute to the code, documentation or any topic you want to improve this project.
 
 
