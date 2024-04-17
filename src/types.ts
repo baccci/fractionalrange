@@ -22,7 +22,7 @@ export type FractionalRangeProps = DetailedProps & {
   step: number
   value?: number
   initialValue?: number
-  id: string
+  id?: string
   className?: string
   disableWillChange?: boolean
   onChange?: (value: number) => void
