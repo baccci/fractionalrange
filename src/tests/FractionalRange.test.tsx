@@ -108,7 +108,6 @@ describe('FractionalRange', () => {
     const baseComponent = screen.getByTestId('fractional-range')
     const { indicator, shadowLeft, shadowRight, titlebar, value } = getLayoutNodes(baseComponent)
 
-    console.log({ indicator, shadowLeft, shadowRight, titlebar, value })
     expect(baseComponent).toBeDefined()
     expect(screen.getAllByText('Fractional Range')).toBeDefined()
     expect(indicator).toBeDefined()
