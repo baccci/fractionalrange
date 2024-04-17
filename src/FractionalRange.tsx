@@ -12,6 +12,7 @@ import { useGestures } from './hooks/useGestures'
 import { Titlebar } from './Titlebar'
 import { Label } from './Label'
 import { Value } from './Value'
+import { Shadows } from './Shadows'
 import { Layout } from './Layout'
 import { FractionalRangeContext, useFractionalRange } from './context'
 import type { FractionalRangeType, FractionalRangeProps } from './types'
@@ -84,6 +85,7 @@ FractionalRange.Titlebar = Titlebar
 FractionalRange.Label = Label
 FractionalRange.Value = Value
 FractionalRange.IndicatorDot = IndicatorDot
+FractionalRange.Shadows = Shadows
 
 function propsInjection(props: FractionalRangeProps & { boundsWidth: number, fractionWidth: number, labelText?: string }) {
   const {

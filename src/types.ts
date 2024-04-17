@@ -39,4 +39,5 @@ export type FractionalRangeType = React.FC<FractionalRangeProps> & {
   Label: React.FC<LabelComponentProps>
   Value: React.FC<ValueProps>
   IndicatorDot: React.FC<IndicatorDotProps>
+  Shadows: React.FC
 }
