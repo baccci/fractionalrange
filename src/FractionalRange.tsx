@@ -52,7 +52,7 @@ export const FractionalRange: FractionalRangeType = (props) => {
     <FractionalRangeContext.Provider value={fractionalContext}>
       <div
         className={cn(
-          'w-full overflow-hidden flex flex-col items-start relative py-6 px-0 bg-black rounded-xl border border-borderblack select-none isolate text-white',
+          'w-full overflow-hidden flex flex-col items-start relative py-6 px-0 bg-black rounded-xl border border-borderblack select-none isolate text-white antialiased',
           '[--fraction-small-height:0.5rem] [--fraction-large-height:0.75rem]',
           { 'pt-6 pb-3': layout === 'none' || layout === 'shadows' },
           className
