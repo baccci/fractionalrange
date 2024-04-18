@@ -37,13 +37,13 @@ export function App() {
 ### Layouts
 FractionalRange has 5 different prebuilt layouts you can choose: **none**, **indicator**, **shadows**, **values**, and **full**. Each layout shows or hides different components.
 
-- `None *(default)*`: Only renders the slider.
+- `None (default)`: Only renders the slider.
 - `Indicator`: Renders the dot indictor below the slider.
 - `Shadows`: Renders the shadows.
 - `Values`: Renders a Title Bar which has the Label in the left and the current value on the right.
 - `Full`: Renders all the components.
 
-Most of this components are stylable using standard or any kind of CSS framework.
+Most of this components are stylable using standard CSS or TailwindCSS.
 
 ```jsx
 export function App() {
