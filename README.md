@@ -102,13 +102,13 @@ export function App() {
   <td><code>min</code></td>
   <td>number</td>
   <td>0</td>
-  <td>The lowest value in the range the slider allowed.</td>
+  <td>The lowest value in the range allowed.</td>
 </tr>
 <tr>
   <td><code>max</code></td>
   <td>number</td>
   <td>2</td>
-  <td>The greatest value in the range the slider allowed.</td>
+  <td>The greatest value in the range allowed.</td>
 </tr>
 <tr>
   <td><code>step</code></td>
