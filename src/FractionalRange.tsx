@@ -95,6 +95,7 @@ function propsInjection(props: FractionalRangeProps & { boundsWidth: number, fra
     'aria-label': _ariaLabel,
     labelText: _labelText,
     className: _className,
+    disableWillChange: _disableWillChange,
     layout: _layout,
     label: _label,
     color: _color,

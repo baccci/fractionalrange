@@ -1,6 +1,6 @@
 {
   "name": "fractionalrange",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "An opinionated slider component with ticks for React.",
   "exports": {
     "types": "./dist/index.d.ts",
