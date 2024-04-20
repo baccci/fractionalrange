@@ -52,9 +52,9 @@ export const FractionalRange: FractionalRangeType = (props) => {
     <FractionalRangeContext.Provider value={fractionalContext}>
       <div
         className={cn(
-          'w-full overflow-hidden flex flex-col items-start relative py-6 px-0 bg-black rounded-xl border border-borderblack select-none isolate text-white antialiased',
+          'fr-w-full fr-overflow-hidden fr-flex fr-flex-col fr-items-start fr-relative fr-py-6 fr-px-0 fr-bg-black fr-rounded-xl fr-border fr-border-borderblack fr-select-none fr-isolate fr-text-white fr-antialiased',
           '[--fraction-small-height:0.5rem] [--fraction-large-height:0.75rem]',
-          { 'pt-6 pb-3': layout === 'none' || layout === 'shadows' },
+          { 'fr-pt-6 fr-pb-3': layout === 'none' || layout === 'shadows' },
           className
         )}
         ref={wrapperRef}
@@ -64,7 +64,7 @@ export const FractionalRange: FractionalRangeType = (props) => {
           {children}
         </Layout>
         <animated.div
-          className={cn('flex gap-1.5 items-end cursor-ew-resize pt-4 pb-2 focus-visible:outline-offset-[16px]', { 'will-change-transform': !disableWillChange })}
+          className={cn('fr-flex fr-gap-1.5 fr-items-end fr-cursor-ew-resize fr-pt-4 fr-pb-2 fr-focus-visible:outline-offset-[16px]', { 'fr-will-change-transform': !disableWillChange })}
           role='slider'
           tabIndex={0}
           aria-label={ariaLabel}

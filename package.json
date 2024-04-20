@@ -18,7 +18,8 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "clean": "rm -rf dist",
-    "build": "npm run clean && tsup src/index.ts",
+    "build:tailwind": "NODE_ENV=production npx tailwindcss -i ./src/index.css -o ./src/style.css",
+    "build": "npm run clean && npm run build:tailwind && tsup src/index.ts",
     "dev": "tsup src/index.ts --watch"
   },
   "keywords": [
