@@ -58,8 +58,8 @@ const Fraction: React.FC<FractionProps> = ({ size, value }) => {
       data-valueinrange={valueIsInRange}
       data-valueheight={size}
       className={cn(
-        'fr-relative fr-w-[1.5px] fr-min-w-[1.5px]  data-[valueheight="1"]:fr-h-[var(--fraction-small-height)] data-[valueheight="2"]:fr-h-[var(--fraction-large-height)] [transform:translateZ(0px)] fr-touch-none fr-bg-[var(--color-display)]',
-        'data-[valueinrange="false"]:fr-opacity-50 data-[valueinrange="true"]:fr-opacity-100',
+        'relative w-[1.5px] min-w-[1.5px]  data-[valueheight="1"]:h-[var(--fraction-small-height)] data-[valueheight="2"]:h-[var(--fraction-large-height)] [transform:translateZ(0px)] touch-none bg-[var(--color-display)]',
+        'data-[valueinrange="false"]:opacity-50 data-[valueinrange="true"]:opacity-100',
         fragmentClassName
       )}
     >
@@ -86,7 +86,7 @@ const FractionValueDisplay = ({ value, showValue, color: _color }: FractionValue
   return (
     <span
       style={{ color }}
-      className={cn(`fr-absolute fr-top-[-24px] fr-left-[50%] fr--translate-x-1/2 fr-text-[12px] fr-text-[${color}] fr-select-none fr-touch-none fr-font-mono`)}
+      className={cn(`absolute top-[-24px] left-[50%] -translate-x-1/2 text-[12px] text-[${color}] select-none touch-none font-mono`)}
     >
       {fixedValue}
     </span>

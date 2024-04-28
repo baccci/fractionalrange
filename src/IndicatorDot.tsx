@@ -9,7 +9,7 @@ export const IndicatorDot: React.FC<IndicatorDotProps> = ({ className, ...rest }
   return (
     <span
       data-indicatordot
-      className={cn('fr-size-1 fr-rounded-full fr-absolute fr-bottom-[10px] fr-left-1/2 fr--translate-x-[25%]', className)}
+      className={cn('size-1 rounded-full absolute bottom-[10px] left-1/2 -translate-x-[25%]', className)}
       style={{ backgroundColor: !disabled ? activeColor || '#fff' : '#6d6d6d' }}
       {...rest}
     />

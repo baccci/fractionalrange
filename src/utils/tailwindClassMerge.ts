@@ -1,9 +1,5 @@
 import { type ClassValue, clsx } from 'clsx'
-import { extendTailwindMerge } from 'tailwind-merge'
-
-const twMerge = extendTailwindMerge({
-  prefix: 'fr-' // need to be same as per tailwind.config.js
-})
+import { twMerge } from 'tailwind-merge'
 
 /**
  * Merge conflicting tailwind classes

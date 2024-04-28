@@ -9,7 +9,7 @@ export const Titlebar: React.FC<TitlebarProps> = ({ className, children, ...rest
   return (
     <div
       data-titlebar
-      className={cn('fr-w-full fr-flex fr-justify-between fr-font-mono fr-px-6 fr-mt-[-8px] fr-text-sm fr-mb-6 fr-z-[2]', className)}
+      className={cn('w-full flex justify-between font-mono px-6 mt-[-8px] text-sm mb-6 z-[2]', className)}
       {...rest}
     >
       {children}

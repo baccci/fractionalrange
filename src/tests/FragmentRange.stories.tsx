@@ -62,6 +62,6 @@ export const WithChildren = {
 
 export const WithCustomClassname = {
   args: {
-    className: 'bg-[#222] border border-[#333]'
+    className: 'bg-[#222] border border-[#333] w-[300px]'
   }
 }
