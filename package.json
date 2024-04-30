@@ -1,6 +1,6 @@
 {
   "name": "fractionalrange",
-  "version": "0.0.12",
+  "version": "0.1.0",
   "description": "An opinionated slider component with ticks for React.",
   "exports": {
     "types": "./dist/index.d.ts",
@@ -15,11 +15,11 @@
   "scripts": {
     "test": "vitest",
     "test:ui": "vitest --ui",
-    "storybook": "storybook dev -p 6006",
+    "storybook": "npm run tailwind && storybook dev -p 6006",
     "build-storybook": "storybook build",
     "clean": "rm -rf dist",
-    "build:tailwind": "NODE_ENV=production npx tailwindcss -i ./src/index.css -o ./src/style.css",
-    "build": "npm run clean && npm run build:tailwind && tsup src/index.ts",
+    "build": "npm run clean && tsup src/index.ts",
+    "tailwind": "npx tailwindcss -o ./src/tests/style.css",
     "dev": "tsup src/index.ts --watch"
   },
   "keywords": [

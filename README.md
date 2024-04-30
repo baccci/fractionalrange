@@ -9,13 +9,32 @@
 First install the component in your project:
 
 ```bash
-npm i fractionalrange
+npm install fractionalrange
 ```
 
-Add it into your app:
+Since this component is built on top of TailwindCSS, you need to install it first. You can follow the [official TailwindCSS installation guide](https://tailwindcss.com/docs/installation). Then you need to add the following code to your `tailwind.config.js` file:
+
+```js
+// tailwind.config.js
+import { fractionalrange } from 'fractionalrange'
+
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    // ...
+    'node_modules/fractionalrange/**/*.{js,jsx,ts,tsx}'
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [fractionalrange()],
+}
+```
+
+The final step is to add it into your app:
 
 ```jsx
-import { FractionalRange } from 'fractionalrange'
+import FractionalRange from 'fractionalrange'
 
 export function App() {
   return (
@@ -66,7 +85,7 @@ export function App() {
 To style or extend any layout component, or add a totally new one:
 
 ```jsx
-import { FractionalRange } from 'fractionalrange'
+import FractionalRange from 'fractionalrange'
 import { CustomComponent } from './Custom.tsx'
 
 export function App() {
@@ -207,5 +226,8 @@ Full documentation soon.
 
 ## Contribute
 You're wellcome to contribute to the code, documentation or any topic you want to improve this project.
+
+## Acknowledgments
+This component was inspired by [Rauno Freiberg](rauno.me).
 
 

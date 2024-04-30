@@ -1,4 +1,3 @@
-import './style.css'
 import React from 'react'
 import useMeasure from 'react-use-measure'
 import Fractions from './Fractions'
