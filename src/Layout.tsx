@@ -41,17 +41,13 @@ const Values = () => {
 }
 
 const Indicators = () => {
-  return (
-    <>
-      <IndicatorDot />
-    </>
-  )
+  return <IndicatorDot />
 }
 
 const Full = () => {
   return (
     <>
-       <Titlebar>
+      <Titlebar>
         <Label />
         <Value />
       </Titlebar>
