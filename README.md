@@ -228,6 +228,6 @@ Full documentation soon.
 You're wellcome to contribute to the code, documentation or any topic you want to improve this project.
 
 ## Acknowledgments
-This component was inspired by [Rauno Freiberg](rauno.me).
+This component was inspired by [Rauno Freiberg](https://rauno.me).
 
 
