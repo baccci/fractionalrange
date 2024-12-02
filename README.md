@@ -221,9 +221,6 @@ export function App() {
 
 *Properties marked with an `'?'` are optional.*
 
-## Documentation
-Full documentation soon.
-
 ## Contribute
 You're wellcome to contribute to the code, documentation or any topic you want to improve this project.
 
