@@ -1,20 +1,13 @@
-import React from 'react'
-import { cn } from './utils/tailwindClassMerge'
+import type React from 'react'
 
-interface TitlebarProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+interface TitlebarProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode
 }
 
-export const Titlebar: React.FC<TitlebarProps> = ({ className, children, ...rest }) => {
+export function Titlebar({ children, ...rest }: TitlebarProps) {
   return (
-    <div
-      data-titlebar
-      className={cn('w-full flex justify-between font-mono px-6 mt-[-8px] text-sm mb-6 z-[2]', className)}
-      {...rest}
-    >
+    <div data-titlebar {...rest}>
       {children}
     </div>
   )
 }
-
-Titlebar.displayName = 'Titlebar'

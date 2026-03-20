@@ -1,0 +1,153 @@
+/* FractionalRange — standalone styles */
+/* Import: import 'fractionalrange/styles.css' */
+
+/* Root container */
+[data-fractional-range] {
+  /* Theming tokens — override these to customize */
+  --fr-bg: #111;
+  --fr-border: #222;
+  --fr-color: #fff;
+  --fr-active-color: #fff;
+  --fr-disabled-color: #6d6d6d;
+  --fr-font-sans: 'Geist', system-ui, sans-serif;
+  --fr-font-mono: 'GeistMono', monospace;
+  --fr-fraction-small-height: 0.5rem;
+  --fr-fraction-large-height: 0.75rem;
+  --fr-fraction-width: 1.5px;
+  --fr-fraction-gap: 0.375rem;
+  --fr-shadow-width: 4rem;
+  --fr-radius: 0.75rem;
+  --fr-indicator-size: 0.25rem;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  overflow: hidden;
+  padding: 1.5rem 0;
+  background-color: var(--fr-bg);
+  border-radius: var(--fr-radius);
+  border: 1px solid var(--fr-border);
+  color: var(--fr-color);
+  user-select: none;
+  isolation: isolate;
+  -webkit-font-smoothing: antialiased;
+  font-family: var(--fr-font-sans);
+  box-sizing: border-box;
+}
+
+[data-fractional-range][data-compact] {
+  padding-top: 1.5rem;
+  padding-bottom: 0.75rem;
+}
+
+/* Titlebar */
+[data-fractional-range] [data-titlebar] {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 1.5rem;
+  margin-top: -0.5rem;
+  margin-bottom: 1.5rem;
+  font-family: var(--fr-font-mono);
+  font-size: 0.875rem;
+  z-index: 2;
+  box-sizing: border-box;
+}
+
+/* Value display */
+[data-fractional-range] [data-value] {
+  display: flex;
+  gap: 0.25rem;
+}
+
+/* Indicator dot */
+[data-fractional-range] [data-indicator-dot] {
+  width: var(--fr-indicator-size);
+  height: var(--fr-indicator-size);
+  border-radius: 50%;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-25%);
+  background-color: var(--fr-active-color);
+}
+
+[data-fractional-range][data-disabled] [data-indicator-dot] {
+  background-color: var(--fr-disabled-color);
+}
+
+/* Edge shadows */
+[data-fractional-range] [data-shadow-left],
+[data-fractional-range] [data-shadow-right] {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: var(--fr-shadow-width);
+  pointer-events: none;
+  z-index: 1;
+}
+
+[data-fractional-range] [data-shadow-left] {
+  left: 0;
+  background: linear-gradient(to right, var(--fr-bg), transparent);
+}
+
+[data-fractional-range] [data-shadow-right] {
+  right: 0;
+  background: linear-gradient(to left, var(--fr-bg), transparent);
+}
+
+/* Slider track (the draggable strip of fractions) */
+[data-fractional-range] [data-slider] {
+  display: flex;
+  gap: var(--fr-fraction-gap);
+  align-items: flex-end;
+  cursor: ew-resize;
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+  touch-action: none;
+}
+
+[data-fractional-range] [data-slider]:focus-visible {
+  outline-offset: 16px;
+}
+
+/* Individual fraction tick */
+[data-fractional-range] [data-fraction] {
+  position: relative;
+  width: var(--fr-fraction-width);
+  min-width: var(--fr-fraction-width);
+  touch-action: none;
+  transform: translateZ(0);
+}
+
+[data-fractional-range] [data-fraction][data-size="small"] {
+  height: var(--fr-fraction-small-height);
+}
+
+[data-fractional-range] [data-fraction][data-size="large"] {
+  height: var(--fr-fraction-large-height);
+}
+
+[data-fractional-range] [data-fraction][data-in-range="true"] {
+  opacity: 1;
+}
+
+[data-fractional-range] [data-fraction][data-in-range="false"] {
+  opacity: 0.5;
+}
+
+/* Fraction value label (shown above large fractions) */
+[data-fractional-range] [data-fraction-label] {
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  font-family: var(--fr-font-mono);
+  user-select: none;
+  touch-action: none;
+  white-space: nowrap;
+}

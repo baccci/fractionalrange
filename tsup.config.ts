@@ -1,11 +1,12 @@
 import { defineConfig } from 'tsup'
 
 export default defineConfig({
-  minify: true,
-  target: 'es2018',
-  external: ['react'],
-  dts: true,
+  entry: ['src/index.ts'],
   format: ['esm', 'cjs'],
-  injectStyle: true,
-  entryPoints: ['src/index.ts']
+  dts: true,
+  minify: true,
+  target: 'es2020',
+  external: ['react', 'react-dom', 'motion', 'motion/react'],
+  treeshake: true,
+  clean: true,
 })

@@ -1,20 +1,22 @@
 import type React from 'react'
-import type { DetailedHTMLProps } from 'react'
-import type { ValueProps } from './Value'
-import type { IndicatorDotProps } from './IndicatorDot'
-import type { LabelProps as LabelComponentProps } from './Label'
+import type { IndicatorDotProps } from './indicator-dot'
+import type { LabelProps as LabelComponentProps } from './label'
+import type { ValueProps } from './value'
 
-export type DetailedProps = Omit<DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, 'onChange'>
+export type DetailedProps = Omit<
+  React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>,
+  'onChange'
+>
 
-type LabelProps = {
-  label: React.ReactNode
-  'aria-label': string
-} | {
-  label: string
-  'aria-label'?: string
-}
-
-export type Layout = 'none' | 'indicator' | 'shadows' | 'values' | 'full'
+type LabelProps =
+  | {
+      label: React.ReactNode
+      'aria-label': string
+    }
+  | {
+      label: string
+      'aria-label'?: string
+    }
 
 export type FractionalRangeProps = DetailedProps & {
   min: number
@@ -24,14 +26,14 @@ export type FractionalRangeProps = DetailedProps & {
   initialValue?: number
   id?: string
   className?: string
-  disableWillChange?: boolean
   onChange?: (value: number) => void
+  onStep?: (value: number) => void
   color?: string
   activeColor?: string
   disabled?: boolean
-  sound?: string
-  fragmentClassName?: string
-  layout?: Layout
+  showIndicator?: boolean
+  showShadows?: boolean
+  fractionClassName?: string
 } & LabelProps
 
 export type FractionalRangeType = React.FC<FractionalRangeProps> & {

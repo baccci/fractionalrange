@@ -1,4 +1,5 @@
-import { FractionalRange } from './FractionalRange'
-import { fractionalrange } from './utils/tailwindExtendTheme'
-export { FractionalRange, fractionalrange }
-export default FractionalRange
+export { FractionalRange, FractionalRange as default } from './fractional-range'
+export type { IndicatorDotProps } from './indicator-dot'
+export type { LabelProps } from './label'
+export type { FractionalRangeProps } from './types'
+export type { ValueProps } from './value'

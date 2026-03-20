@@ -1,35 +1,26 @@
-import { createContext, useContext, useState } from 'react'
-import type { FractionalRangeProps } from './types'
+import { createContext, useContext } from 'react'
 
-type FractionalContextArgs = FractionalRangeProps & {
-  boundsWidth: number
-  fractionWidth: number
+export interface FractionalRangeContextValue {
+  currentValue: number
+  color: string
+  activeColor: string
+  disabled: boolean
   labelText?: string
+  fractionClassName?: string
+  min: number
+  max: number
+  step: number
 }
 
-export const useFractionalRange = ({ ...props }: FractionalContextArgs) => {
-  const [translateX, setTranslateX] = useState(0)
-  const currentValue = props.disabled ? 0 : props.value || 0
-  const color = props.color || '#fff'
+export const FractionalRangeContext = createContext<FractionalRangeContextValue | null>(null)
 
-  return {
-    translateX,
-    setTranslateX,
-    currentValue,
-    color,
-    ...props
-  }
-}
-
-export type FractionalContextType = ReturnType<typeof useFractionalRange>
-
-export const FractionalRangeContext = createContext<FractionalContextType | null>(null)
-
-export const useFractionalRangeContext = () => {
+export function useFractionalRangeContext() {
   const context = useContext(FractionalRangeContext)
 
   if (!context) {
-    throw new Error('useFractionalRangeContext must be used within a FractionalRangeContext.Provider')
+    throw new Error(
+      'useFractionalRangeContext must be used within a FractionalRangeContext.Provider',
+    )
   }
 
   return context

@@ -1,94 +1,69 @@
-import React from 'react'
-import { cn } from './utils/tailwindClassMerge'
-import { numberToFixed } from './utils/numberToFixed'
+import { memo, useMemo } from 'react'
+import { LARGE_FRACTION_INTERVAL } from './constants'
 import { useFractionalRangeContext } from './context'
-import Decimal from 'decimal.js'
+import { numberToFixed } from './utils/number-to-fixed'
+import { roundToStep } from './utils/round-to-step'
 
 interface FractionsProps {
   fractionsArray: number[]
 }
 
-export const Fractions: React.FC<FractionsProps> = ({ fractionsArray }) => {
+export function Fractions({ fractionsArray }: FractionsProps) {
   const { min, step } = useFractionalRangeContext()
 
-  const FractionChildren = React.useMemo(() => (
-    fractionsArray.map((index) => {
-      const size = index % 5 === 0 ? 2 : 1
-      const safeValue = new Decimal(min).plus(new Decimal(index).times(step)).toNumber()
-      return (
-        <Fraction
-          key={index}
-          size={size}
-          value={safeValue}
-        />
-      )
-    })
-  ), [fractionsArray, min, step])
-
-  return (
-    <>
-      {FractionChildren}
-    </>
+  const children = useMemo(
+    () =>
+      fractionsArray.map((index) => {
+        const isLarge = index % LARGE_FRACTION_INTERVAL === 0
+        const value = roundToStep(min + index * step, step, min)
+        return <Fraction key={index} isLarge={isLarge} value={value} />
+      }),
+    [fractionsArray, min, step],
   )
+
+  return <>{children}</>
 }
 
 export default Fractions
 
 interface FractionProps {
-  size: 1 | 2
+  isLarge: boolean
   value: number
 }
 
-const Fraction: React.FC<FractionProps> = ({ size, value }) => {
-  const { color, activeColor: _activeColor, currentValue, fragmentClassName } = useFractionalRangeContext()
+const Fraction = memo(function Fraction({ isLarge, value }: FractionProps) {
+  const { color, activeColor, currentValue, fractionClassName } = useFractionalRangeContext()
 
-  const activeColor = _activeColor ?? '#fff'
+  const isInRange =
+    value === 0 ||
+    (currentValue >= 0 && value >= 0 && value <= currentValue) ||
+    (currentValue < 0 && value <= 0 && value >= currentValue)
 
-  const currentValueIsPositive = currentValue > 0
-  const valuePositive = value && value > 0
-  const equalSignValues = currentValueIsPositive === valuePositive
-  const valueIsPotentiallyInRange = equalSignValues && Math.abs(currentValue) >= Math.abs(value || 0)
-  const valueIsInRange = valueIsPotentiallyInRange || value === 0
-  const showValue = size === 2
-  const colorDisplay = valueIsInRange ? activeColor : color
+  const displayColor = isInRange ? activeColor : color
 
   return (
     <div
-      style={{ '--color-display': colorDisplay } as React.CSSProperties}
-      data-valueinrange={valueIsInRange}
-      data-valueheight={size}
-      className={cn(
-        'relative w-[1.5px] min-w-[1.5px]  data-[valueheight="1"]:h-[var(--fraction-small-height)] data-[valueheight="2"]:h-[var(--fraction-large-height)] [transform:translateZ(0px)] touch-none bg-[var(--color-display)]',
-        'data-[valueinrange="false"]:opacity-50 data-[valueinrange="true"]:opacity-100',
-        fragmentClassName
-      )}
+      data-fraction=""
+      data-size={isLarge ? 'large' : 'small'}
+      data-in-range={isInRange}
+      className={fractionClassName}
+      style={{ backgroundColor: displayColor }}
     >
-      <FractionValueDisplay
-        value={value}
-        showValue={showValue}
-        color={color}
-      />
+      {isLarge && <FractionLabel value={value} color={color} />}
     </div>
   )
-}
+})
 
-interface FractionValueDisplayProps {
+interface FractionLabelProps {
   value: number
-  showValue: boolean
   color: string
 }
 
-const FractionValueDisplay = ({ value, showValue, color: _color }: FractionValueDisplayProps) => {
-  const fixedValue = numberToFixed(value, 3)
-  const color = _color ?? '#fff'
-
-  if (!showValue) return null
+function FractionLabel({ value, color }: FractionLabelProps) {
+  const display = numberToFixed(value, 3)
   return (
-    <span
-      style={{ color }}
-      className={cn(`absolute top-[-24px] left-[50%] -translate-x-1/2 text-[12px] text-[${color}] select-none touch-none font-mono`)}
-    >
-      {fixedValue}
+    <span data-fraction-label="" style={{ color }}>
+      {display}
     </span>
   )
 }

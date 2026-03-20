@@ -1,42 +1,22 @@
-import React from 'react'
-import { cn } from './utils/tailwindClassMerge'
+import type React from 'react'
 import { useFractionalRangeContext } from './context'
 
-export interface ValueProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+export interface ValueProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode
-  value?: number
 }
 
-export const Value: React.FC<ValueProps> = ({ children, value: _value, className, ...rest }) => {
-  const { value } = useFractionalRangeContext()
-  const valueSign = (value || 1) > 0
-    ? '+'
-    : '-'
-  const Component = children || <ValueDisplay value={value} valueSign={valueSign} />
+export function Value({ children, ...rest }: ValueProps) {
+  const { currentValue } = useFractionalRangeContext()
+  const sign = (currentValue || 1) > 0 ? '+' : '-'
 
   return (
-    <div
-      data-value
-      className={cn('flex gap-1', className)}
-      {...rest}
-    >
-      {Component}
+    <div data-value {...rest}>
+      {children || (
+        <>
+          <span>{sign}</span>
+          <span>{Math.abs(currentValue || 0)}</span>
+        </>
+      )}
     </div>
   )
 }
-
-interface ValueDisplayProps {
-  value: number | undefined
-  valueSign: '+' | '-'
-}
-
-const ValueDisplay: React.FC<ValueDisplayProps> = ({ value, valueSign }) => {
-  return (
-    <>
-      <span>{valueSign}</span>
-      <span>{Math.abs(value || 0)}</span>
-    </>
-  )
-}
-
-Value.displayName = 'Value'

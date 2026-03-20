@@ -1,4 +1,4 @@
-import { FractionalRange } from '../FractionalRange'
+import { FractionalRange } from '../fractional-range'
 import './test.style.css'
 
 export default {
@@ -7,8 +7,8 @@ export default {
   argTypes: {
     activeColor: 'color',
     layout: {
-      options: ['none', 'indicator', 'shadows', 'values', 'full']
-    }
+      options: ['none', 'indicator', 'shadows', 'values', 'full'],
+    },
   },
   args: {
     min: 0,
@@ -20,48 +20,52 @@ export default {
     label: 'Fractional Range',
     layout: 'full',
     disableWillChange: false,
-    disabled: false
-  }
+    disabled: false,
+  },
 }
 
 export const LayoutFull = {
   args: {
-    layout: 'full'
-  }
+    layout: 'full',
+  },
 }
 
 export const LayoutValues = {
   args: {
-    layout: 'values'
-  }
+    layout: 'values',
+  },
 }
 
 export const LayoutIndicator = {
   args: {
-    layout: 'indicator'
-  }
+    layout: 'indicator',
+  },
 }
 
 export const LayoutShadows = {
   args: {
-    layout: 'shadows'
-  }
+    layout: 'shadows',
+  },
 }
 
 export const LayoutNone = {
   args: {
-    layout: 'none'
-  }
+    layout: 'none',
+  },
 }
 
 export const WithChildren = {
   args: {
-    children: <div className='font-mono text-[14px] text-white px-4 py-2 translate-y-[-40%] before:[content:"🧙🏻‍♂️"] before:mr-2'>children</div>
-  }
+    children: (
+      <div className='font-mono text-[14px] text-white px-4 py-2 translate-y-[-40%] before:[content:"🧙🏻‍♂️"] before:mr-2'>
+        children
+      </div>
+    ),
+  },
 }
 
 export const WithCustomClassname = {
   args: {
-    className: 'bg-[#222] border border-[#333] w-[300px]'
-  }
+    className: 'bg-[#222] border border-[#333] w-[300px]',
+  },
 }

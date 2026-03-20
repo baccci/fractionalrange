@@ -1,11 +1,11 @@
-import React from 'react'
+import type React from 'react'
 import { useFractionalRangeContext } from './context'
 
-export interface LabelProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLSpanElement>, HTMLSpanElement> {
+export interface LabelProps extends React.HTMLAttributes<HTMLSpanElement> {
   children?: React.ReactNode
 }
 
-export const Label: React.FC<LabelProps> = ({ children, ...rest }) => {
+export function Label({ children, ...rest }: LabelProps) {
   const { labelText } = useFractionalRangeContext()
   return (
     <span data-label {...rest}>
@@ -14,5 +14,3 @@ export const Label: React.FC<LabelProps> = ({ children, ...rest }) => {
     </span>
   )
 }
-
-Label.displayName = 'Label'
