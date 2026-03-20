@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "cd .. && bun run build && cd website && astro build",
+    "build": "cd .. && bun run build && cd website && bunx astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
