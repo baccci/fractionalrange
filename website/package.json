@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro check && astro build",
+    "build": "cd .. && bun run build && cd website && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -24,7 +24,7 @@
     "astro": "^6.0.8",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
-    "fractionalrange": "link:fractionalrange",
+    "fractionalrange": "file:..",
     "howler": "^2.2.4",
     "motion": "^12.38.0",
     "nanostores": "^0.10.3",
