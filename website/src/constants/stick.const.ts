@@ -1,0 +1,15 @@
+export const DEFAULT_STICK_SIZE = 18
+export const MOBILE_STICK_SIZE = 18
+export const DEFAULT_OPACITY_DISTANCE = 1000
+export const GROWING_DISTANCE = 50
+export const MIN_OPACITY = 0.1
+export const MIN_STICK_LINE_WIDTH = 0.5
+export const MAX_STICK_LINE_WIDTH = 12
+export const DEFAULT_GAP = 10
+export const DEFAULT_FREQUENCY = 0.001
+export const MIN_FREQUENCY = -0.01
+export const MAX_FREQUENCY = 0.01
+export const DEFAULT_AMPLITUDE = 0.5
+export const MIN_AMPLITUDE = 0
+export const MAX_AMPLITUDE = 1
+export const DEFAULT_SPEED = 0.005

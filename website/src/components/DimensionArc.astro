@@ -1,0 +1,21 @@
+---
+/**
+ * Dashed arc with endpoint ticks — like a dimension annotation in engineering drawings.
+ * Used above the "Fractional" title text.
+ */
+---
+
+<span class="absolute left-1/2 -translate-x-1/2 -top-3 sm:-top-4 w-[70%] flex flex-col items-center pointer-events-none" aria-hidden="true">
+  <svg class="w-full h-6 sm:h-8" viewBox="0 0 200 24" fill="none" preserveAspectRatio="none">
+    <path
+      d="M 10 22 Q 100 -6 190 22"
+      stroke="currentColor"
+      stroke-width="0.6"
+      stroke-dasharray="3 3"
+      class="text-white/10"
+      fill="none"
+    />
+    <line x1="10" y1="18" x2="10" y2="24" stroke="currentColor" stroke-width="0.6" class="text-white/10" />
+    <line x1="190" y1="18" x2="190" y2="24" stroke="currentColor" stroke-width="0.6" class="text-white/10" />
+  </svg>
+</span>

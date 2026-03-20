@@ -1,0 +1,21 @@
+---
+import { cn } from "@/utils/tailwindClassMerge";
+import { pseudoBorder } from "@/utils/pseudo-border";
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"a">;
+
+const { href, class: className, ...attrs } = Astro.props;
+---
+
+<a
+  {href}
+  class={cn(
+    "relative h-10 py-0 pr-4 pl-5 rounded-full text-text-primary bg-[#111] hover:bg-[#161616] transition-colors flex items-center",
+    pseudoBorder({ radius: 'full' }),
+    className,
+  )}
+  {...attrs}
+>
+  <slot />
+</a>

@@ -1,0 +1,29 @@
+---
+/**
+ * Dashed border frame — blueprint/technical drawing aesthetic.
+ * Dashed lines extend beyond the corners for an "infinite" feel.
+ */
+import { cn } from "@/utils/tailwindClassMerge";
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"div">;
+
+const { class: className, ...attrs } = Astro.props;
+---
+
+<div class={cn("relative", className)} {...attrs}>
+  <!-- Top — extends beyond corners -->
+  <div class="absolute top-0 -left-8 -right-8 h-px border-t border-dashed border-white/8" aria-hidden="true" />
+  <!-- Bottom — extends beyond corners -->
+  <div class="absolute bottom-0 -left-8 -right-8 h-px border-t border-dashed border-white/8" aria-hidden="true" />
+  <!-- Left — extends beyond corners -->
+  <div class="absolute -top-8 -bottom-8 left-0 w-px border-l border-dashed border-white/8" aria-hidden="true" />
+  <!-- Right — extends beyond corners -->
+  <div class="absolute -top-8 -bottom-8 right-0 w-px border-l border-dashed border-white/8" aria-hidden="true" />
+  <!-- Corner marks -->
+  <div class="absolute top-0 left-0 w-4 h-4 border-t border-l border-white/10" aria-hidden="true" />
+  <div class="absolute top-0 right-0 w-4 h-4 border-t border-r border-white/10" aria-hidden="true" />
+  <div class="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-white/10" aria-hidden="true" />
+  <div class="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-white/10" aria-hidden="true" />
+  <slot />
+</div>

@@ -1,0 +1,21 @@
+---
+import { cn } from "@/utils/tailwindClassMerge";
+import type { HTMLAttributes } from "astro/types";
+
+export interface Props extends HTMLAttributes<"div"> {
+  position?: "horizontal" | "vertical";
+}
+
+const { position = "horizontal", class: className, ...attrs } = Astro.props;
+
+const styles = {
+  horizontal: "w-full h-[1px]",
+  vertical: "w-[1px] h-full",
+}[position];
+---
+
+<div
+  class={cn("bg-white/5 absolute z-[-2]", styles, className)}
+  {...attrs}
+>
+</div>

@@ -1,0 +1,71 @@
+---
+import Layout from "../layouts/Layout.astro";
+import DemoSection from "../components/DemoSection";
+import { HeroTitle } from "../components/HeroTitle";
+import { ClipboardButton } from "@/components/ClipboardButton";
+import GetStartedButton from "@/components/GetStartedButton.astro";
+import Header from "@/components/Header.astro";
+import Background from "@/layouts/Background.svelte";
+import DimensionArc from "@/components/DimensionArc.astro";
+import RulerTicks from "@/components/RulerTicks.astro";
+import DashedFrame from "@/components/DashedFrame.astro";
+import { pseudoBorder } from "@/utils/pseudo-border";
+import GitHubStar from "@/components/GitHubStar.astro";
+import { Footer } from "@/components/footer";
+---
+
+<Layout title="Fractional Range">
+  <Background client:only="svelte" />
+  <Header />
+  <main
+    class="pt-12 small-device:pt-8 md:pt-16 flex items-center flex-col overflow-hidden mb-5"
+  >
+    <!-- Hero section wrapped in dashed frame -->
+    <DashedFrame class="p-8 sm:p-12 w-full max-w-[600px] lg:max-w-[800px] mx-4">
+      <div class="relative">
+        <!-- Decorations sit around the reactive title -->
+        <div class="relative mb-5">
+          <DimensionArc />
+          <HeroTitle client:only="react" />
+          <RulerTicks />
+        </div>
+
+        <p
+          class="text-text-secondary text-base tracking-wide text-center mb-12"
+        >
+          An opinionated React slider.
+        </p>
+        <div class="flex gap-3 items-center flex-wrap justify-center">
+          <GetStartedButton href="/" />
+          <div
+            class:list={[
+              "relative h-10 bg-[#111] text-sm text-text-secondary rounded-xl px-3 pr-1.5 font-mono flex gap-2 items-center",
+              pseudoBorder({ radius: "xl" }),
+            ]}
+          >
+            npm install fractionalrange
+            <ClipboardButton
+              title="Copy to clipboard"
+              aria-label="copy to clipboard"
+              client:load
+            />
+          </div>
+        </div>
+      </div>
+    </DashedFrame>
+
+    <!-- Interactive demo -->
+    <DashedFrame
+      class="mt-10 sm:mt-14 small-device:mt-8 w-full max-w-[600px] lg:max-w-[800px] mx-4 p-8 sm:p-12"
+    >
+      <DemoSection client:only="react" />
+    </DashedFrame>
+
+    <!-- GitHub star -->
+    <div class="mt-14 flex flex-col items-center gap-3">
+      <p class="text-text-muted text-sm tracking-wide">If you liked this project, consider giving it a star</p>
+      <GitHubStar />
+    </div>
+  </main>
+  <Footer />
+</Layout>

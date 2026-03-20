@@ -1,0 +1,13 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import Logo from "./Logo.astro";
+import { cn } from "@/utils/tailwindClassMerge";
+
+type Props = HTMLAttributes<"svg">;
+
+const { class: className, ...attrs } = Astro.props;
+---
+
+<header class={cn("p-4", className)} {...attrs}>
+  <Logo width={28} />
+</header>

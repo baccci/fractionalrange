@@ -1,0 +1,30 @@
+---
+import IconArrow from "./icons/IconArrow.astro";
+import LinkButton from "./LinkButton.astro";
+
+interface Props {
+  href: string;
+}
+
+const { href } = Astro.props;
+---
+
+<LinkButton
+  href={href}
+  class="group h-10 w-[148px] font-medium text-sm relative overflow-hidden"
+>
+  <div
+    class="absolute right-1.5 bg-white/5 rounded-full p-2.5 text-text-primary
+    sm:group-hover:rotate-45 transform-gpu
+    transition-transform duration-300 ease-in-out z-1"
+  >
+    <IconArrow width={10} />
+  </div>
+  <div class="size-full flex items-center">Get started</div>
+  <div
+    class="absolute top-0 left-0 size-full flex items-center pl-5 bg-fr-orange text-white transform-3d
+    translate-y-[101%] sm:group-hover:translate-y-0 transition-transform transform-gpu duration-300 ease-in-out"
+  >
+    Go to docs
+  </div>
+</LinkButton>

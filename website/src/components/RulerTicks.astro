@@ -1,0 +1,37 @@
+---
+/**
+ * Decorative ruler tick marks — echoes the component's fraction ticks.
+ * Used below the "Range" title text.
+ */
+interface Props {
+  count?: number;
+  accentStart?: number;
+  accentEnd?: number;
+}
+
+const { count = 51, accentStart = 20, accentEnd = 30 } = Astro.props;
+
+const ticks = Array.from({ length: count }, (_, i) => {
+  const isLarge = i % 10 === 0;
+  const isMid = i % 5 === 0 && !isLarge;
+  const isAccent = i >= accentStart && i <= accentEnd;
+  const size = isLarge ? "w-[1.5px] h-3.5 sm:h-4" : isMid ? "w-[1px] h-2 sm:h-2.5" : "w-[1px] h-1 sm:h-1.5";
+  const color = isAccent ? "bg-white/40" : "bg-white/15";
+  return `${size} ${color}`;
+});
+---
+
+<span class="flex justify-center mt-2 sm:mt-3 pointer-events-none" aria-hidden="true">
+  <span class="ruler flex items-start gap-[2px]">
+    {ticks.map((classes) => (
+      <span class={classes} />
+    ))}
+  </span>
+</span>
+
+<style>
+  .ruler {
+    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+  }
+</style>

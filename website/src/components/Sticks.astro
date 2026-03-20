@@ -1,0 +1,64 @@
+<canvas id="spinningSticks" class="absolute top-0 left-0 w-full h-full z-[-1]">
+  Your browser does not support the HTML5 canvas tag.
+</canvas>
+
+<script>
+  import {
+    DEFAULT_OPACITY_DISTANCE,
+    DEFAULT_STICK_SIZE,
+    MOBILE_STICK_SIZE,
+    DEFAULT_AMPLITUDE,
+    DEFAULT_FREQUENCY,
+    DEFAULT_SPEED,
+    DEFAULT_GAP,
+  } from "@/constants/stick.const";
+  import { setCanvasDPI } from "@/utils/setCanvasDPI";
+  import { ControllerType } from "@/models/types";
+  import { ControllerFactory } from "@/models/ControllerFactory";
+  import { getDeviceScreen } from "@/utils/getDeviceScreen";
+
+  const canvas = document.getElementById("spinningSticks") as HTMLCanvasElement;
+  if (!canvas) throw new Error("Canvas not found");
+
+  const context = canvas.getContext("2d");
+  if (!context || context === null) throw new Error("Context not found");
+
+  const canvasX = canvas.getBoundingClientRect().x;
+  const canvasY = canvas.getBoundingClientRect().y;
+
+  function onResize() {
+    if (!context) return;
+    const controllerType = getDeviceScreen().isSmallerOrEqualToTablet
+      ? ControllerType.Noise
+      : ControllerType.MouseEvent;
+
+    const controller = ControllerFactory.createController(controllerType, {
+      context,
+      canvasX,
+      canvasY,
+      canvas,
+      gap: DEFAULT_GAP,
+      size: DEFAULT_STICK_SIZE,
+      opacityDistance: DEFAULT_OPACITY_DISTANCE,
+      amplitude: DEFAULT_AMPLITUDE,
+      frecuency: DEFAULT_FREQUENCY,
+      speed: DEFAULT_SPEED,
+    });
+
+    const { width, height } = canvas.getBoundingClientRect();
+    canvas.width = width;
+    canvas.height = height;
+
+    setCanvasDPI(canvas, 180);
+
+    if (getDeviceScreen().isMobile) {
+      controller.size = MOBILE_STICK_SIZE;
+    }
+
+    controller.setSticks();
+    controller.draw();
+  }
+
+  window.addEventListener("resize", onResize);
+  onResize();
+</script>

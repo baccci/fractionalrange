@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+/* FractionalRange component styles */
+@import "../../../src/styles.css";
+
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, monospace;
+
+  --color-fr-orange: #e66a18;
+  --color-fr-orange-dim: #e66a1833;
+  --color-surface: #0a0a0a;
+  --color-surface-raised: #141414;
+  --color-surface-border: #1f1f1f;
+  --color-text-primary: #e5e5e5;
+  --color-text-secondary: #737373;
+  --color-text-muted: #525252;
+}
+
+/* Custom variant for short screens */
+@custom-variant small-device (@media (max-height: 840px));
+
+/* Lateral padding utility */
+@utility p-lateral {
+  padding: 0 2rem;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/InterVariable.woff2") format("woff2");
+  font-weight: 100 1000;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  src: url("/fonts/GeistMonoVF.woff2") format("woff2");
+  font-weight: 100 1000;
+}
+
+:root {
+  font-feature-settings: "liga" 1, "calt" 1;
+}
+
+@supports (font-variation-settings: normal) {
+  :root {
+    font-family: "Inter", sans-serif;
+  }
+}
+
+body {
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+}
+
+/* Option slider: show motion track on desktop, native scroll on touch */
+.touch-hidden { display: flex; }
+.touch-visible { display: none; }
+
+@media (pointer: coarse) {
+  .touch-hidden { display: none; }
+  .touch-visible { display: flex; }
+}
+
+/* Hide scrollbar on native scroll track */
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
