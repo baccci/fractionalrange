@@ -1,7 +1,7 @@
 import { ControllerType } from './types'
-import { MouseEventController } from './MouseEventController'
-import { NoiseController } from './NoiseController'
-import { type ControllerParams, type Controller } from './Controller'
+import { MouseEventController } from './mouse-event-controller'
+import { NoiseController } from './noise-controller'
+import { type ControllerParams, type Controller } from './controller'
 
 export interface MouseEventControllerParams extends ControllerParams {
   growingDistance?: number;

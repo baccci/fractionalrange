@@ -1,5 +1,5 @@
-import { DEFAULT_OPACITY_DISTANCE, GROWING_DISTANCE, MAX_STICK_LINE_WIDTH, MIN_OPACITY, MIN_STICK_LINE_WIDTH } from '@/constants/stick.const'
-import { Controller, type ControllerParams } from './Controller'
+import { DEFAULT_OPACITY_DISTANCE, GROWING_DISTANCE, MAX_STICK_LINE_WIDTH, MIN_OPACITY, MIN_STICK_LINE_WIDTH } from '@/constants/stick'
+import { Controller, type ControllerParams } from './controller'
 
 interface MouseEventControllerParams extends ControllerParams {
   growingDistance?: number

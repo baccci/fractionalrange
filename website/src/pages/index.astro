@@ -1,16 +1,16 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import DemoSection from "../components/DemoSection";
-import { HeroTitle } from "../components/HeroTitle";
-import { ClipboardButton } from "@/components/ClipboardButton";
-import GetStartedButton from "@/components/GetStartedButton.astro";
-import Header from "@/components/Header.astro";
-import Background from "@/layouts/Background.svelte";
-import DimensionArc from "@/components/DimensionArc.astro";
-import RulerTicks from "@/components/RulerTicks.astro";
-import DashedFrame from "@/components/DashedFrame.astro";
+import Layout from "../layouts/layout.astro";
+import DemoSection from "../components/demo-section";
+import { HeroTitle } from "../components/hero-title";
+import { ClipboardButton } from "@/components/clipboard-button";
+import GetStartedButton from "@/components/get-started-button.astro";
+import Header from "@/components/header.astro";
+import Background from "@/layouts/background.svelte";
+import DimensionArc from "@/components/dimension-arc.astro";
+import RulerTicks from "@/components/ruler-ticks.astro";
+import DashedFrame from "@/components/dashed-frame.astro";
 import { pseudoBorder } from "@/utils/pseudo-border";
-import GitHubStar from "@/components/GitHubStar.astro";
+import GitHubStar from "@/components/github-star.astro";
 import { Footer } from "@/components/footer";
 ---
 
@@ -36,7 +36,7 @@ import { Footer } from "@/components/footer";
           An opinionated React slider.
         </p>
         <div class="flex gap-3 items-center flex-wrap justify-center">
-          <GetStartedButton href="/" />
+          <GetStartedButton href="/installation/" />
           <div
             class:list={[
               "relative h-10 bg-[#111] text-sm text-text-secondary rounded-xl px-3 pr-1.5 font-mono flex gap-2 items-center",

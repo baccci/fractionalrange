@@ -1,4 +1,4 @@
-import { useDemoStore } from '@/store/demoStore'
+import { useDemoStore } from '@/store/demo-store'
 
 export function HeroTitle() {
   const weight = useDemoStore((s) => s.weight)

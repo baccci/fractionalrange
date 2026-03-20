@@ -1,7 +1,7 @@
 import { createNoise3D } from 'simplex-noise'
-import { Controller, type ControllerParams } from './Controller'
-import { Stick } from './Stick'
-import { readElementCSSStyles } from '@/utils/readElementCSSStyles'
+import { Controller, type ControllerParams } from './controller'
+import { Stick } from './stick'
+import { readElementCSSStyles } from '@/utils/read-element-css-styles'
 
 const noise3D = createNoise3D()
 

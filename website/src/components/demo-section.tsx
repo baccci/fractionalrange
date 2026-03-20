@@ -1,9 +1,9 @@
 import { useState, useCallback } from 'react'
 import { Howl } from 'howler'
 import FractionalRangeComponent from 'fractionalrange'
-import { OptionSlider, type SliderOption } from './OptionSlider'
-import { useDemoStore } from '@/store/demoStore'
-import { cn } from '@/utils/tailwindClassMerge'
+import { OptionSlider, type SliderOption } from './option-slider'
+import { useDemoStore } from '@/store/demo-store'
+import { cn } from '@/utils/tailwind-class-merge'
 
 type DemoProperty = 'weight' | 'activeColor' | 'step' | 'range'
 

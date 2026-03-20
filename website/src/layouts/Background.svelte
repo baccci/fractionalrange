@@ -1,5 +1,5 @@
 <script>
-  import { backgroundLightLevel } from "@/store/backgroundStore";
+  import { backgroundLightLevel } from "@/store/background-store";
 
   let transformedBackgroundLight = $derived(
     $backgroundLightLevel === 1

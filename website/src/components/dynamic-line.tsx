@@ -1,6 +1,6 @@
 import React from 'react'
-import { cn } from '@/utils/tailwindClassMerge'
-import { useOnMount } from '@/hooks/useOnMount'
+import { cn } from '@/utils/tailwind-class-merge'
+import { useOnMount } from '@/hooks/use-on-mount'
 
 type Position = 'top' | 'bottom' | 'left' | 'right'
 

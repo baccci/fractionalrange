@@ -1,6 +1,6 @@
 import { useRef, useState, useCallback, useEffect } from 'react'
 import { motion, useMotionValue, animate } from 'motion/react'
-import { cn } from '@/utils/tailwindClassMerge'
+import { cn } from '@/utils/tailwind-class-merge'
 
 export interface SliderOption<T = string> {
   label: string

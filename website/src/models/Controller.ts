@@ -1,5 +1,5 @@
-import { readElementCSSStyles } from '@/utils/readElementCSSStyles'
-import { Stick } from './Stick'
+import { readElementCSSStyles } from '@/utils/read-element-css-styles'
+import { Stick } from './stick'
 
 export interface ControllerParams {
   context?: CanvasRenderingContext2D

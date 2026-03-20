@@ -1,0 +1,40 @@
+---
+title: Installation
+description: How to install FractionalRange in your project.
+---
+
+## Install the package
+
+```bash
+npm install fractionalrange motion
+```
+
+`motion` (Framer Motion) is a peer dependency used for spring-based drag animations.
+
+You can also use your preferred package manager:
+
+```bash
+# yarn
+yarn add fractionalrange motion
+
+# pnpm
+pnpm add fractionalrange motion
+
+# bun
+bun add fractionalrange motion
+```
+
+## Import the styles
+
+Add the component styles to your app's entry point, layout, or root component:
+
+```ts
+import 'fractionalrange/styles.css'
+```
+
+This CSS file provides all the default styling through CSS custom properties. No Tailwind or other CSS framework is required.
+
+## Requirements
+
+- **React** 18 or 19
+- **Motion** 12+

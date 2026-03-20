@@ -1,4 +1,4 @@
-import { MOBILE_WIDTH_BREAKPOINT, TABLET_WIDTH_BREAKPOINT } from '@/constants/screen.const'
+import { MOBILE_WIDTH_BREAKPOINT, TABLET_WIDTH_BREAKPOINT } from '@/constants/screen'
 
 /**
  * Retrieves information about the device screen.

@@ -1,5 +1,5 @@
 import type React from 'react'
-import { cn } from '@/utils/tailwindClassMerge'
+import { cn } from '@/utils/tailwind-class-merge'
 import { IconSpinner } from './icons/icon-spinner'
 
 type SpinnerProps = React.ComponentProps<'svg'>

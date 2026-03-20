@@ -11,11 +11,11 @@
     DEFAULT_FREQUENCY,
     DEFAULT_SPEED,
     DEFAULT_GAP,
-  } from "@/constants/stick.const";
-  import { setCanvasDPI } from "@/utils/setCanvasDPI";
+  } from "@/constants/stick";
+  import { setCanvasDPI } from "@/utils/set-canvas-dpi";
   import { ControllerType } from "@/models/types";
-  import { ControllerFactory } from "@/models/ControllerFactory";
-  import { getDeviceScreen } from "@/utils/getDeviceScreen";
+  import { ControllerFactory } from "@/models/controller-factory";
+  import { getDeviceScreen } from "@/utils/get-device-screen";
 
   const canvas = document.getElementById("spinningSticks") as HTMLCanvasElement;
   if (!canvas) throw new Error("Canvas not found");

@@ -1,4 +1,4 @@
-import { cn } from '@/utils/tailwindClassMerge'
+import { cn } from '@/utils/tailwind-class-merge'
 import React from 'react'
 
 type FooterProps = React.ComponentProps<'footer'>

@@ -1,19 +1,19 @@
 import React from 'react'
-import { cn } from '@/utils/tailwindClassMerge'
-import { IconClipboard } from './icons/IconClipboard'
+import { cn } from '@/utils/tailwind-class-merge'
+import { IconClipboard } from './icons/icon-clipboard'
 import {
   DropdownMenu,
   DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem
-} from './DropdownMenu'
+} from './dropdown-menu'
 import {
   PACKAGE_MANAGERS,
   PACKAGE_MANAGERS_LIST,
   PACKAGE_NAME,
   SCRIPTS
-} from '@/constants/npm.const'
-import { IconCheck } from './icons/IconCheck'
+} from '@/constants/npm'
+import { IconCheck } from './icons/icon-check'
 
 type PackageManager = typeof PACKAGE_MANAGERS_LIST[number]
 
