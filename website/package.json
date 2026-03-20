@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "cd .. && bun run build && cd website && bunx astro build",
+    "prebuild": "cd .. && rm -rf dist && npx tsup src/index.ts && cp src/styles.css dist/styles.css",
+    "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
