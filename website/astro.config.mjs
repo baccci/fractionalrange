@@ -12,6 +12,9 @@ export default defineConfig({
       logo: {
         src: './src/assets/logo.svg',
       },
+      components: {
+        Head: './src/components/starlight-head.astro',
+      },
       social: [
         { icon: 'github', label: 'GitHub', href: 'https://github.com/baccci/fractionalrange' },
       ],
