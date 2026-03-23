@@ -4,21 +4,68 @@ import Analytics from '@vercel/analytics/astro'
 
 interface Props {
 	title: string;
+	description?: string;
+	image?: string;
 }
 
-const { title } = Astro.props;
+const {
+	title,
+	description = 'An opinionated React slider component with ruler-like fraction ticks, spring animations, and full theming via CSS custom properties.',
+	image = '/og.png',
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const fullTitle = Astro.url.pathname === '/' ? `${title} — React Slider Component` : `${title} — FractionalRange`;
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
 		<meta name="viewport" content="width=device-width" />
+
+		<!-- SEO -->
+		<title>{fullTitle}</title>
+		<meta name="description" content={description} />
+		<link rel="canonical" href={canonicalURL} />
+
+		<!-- Open Graph -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={fullTitle} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={new URL(image, Astro.site)} />
+		<meta property="og:site_name" content="FractionalRange" />
+
+		<!-- Twitter -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={fullTitle} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={new URL(image, Astro.site)} />
+
+		<!-- Favicons -->
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+		<!-- Structured Data -->
+		<script type="application/ld+json" set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "SoftwareSourceCode",
+			"name": "FractionalRange",
+			"description": description,
+			"url": "https://fractionalrange.bacci.dev",
+			"codeRepository": "https://github.com/baccci/fractionalrange",
+			"programmingLanguage": "TypeScript",
+			"runtimePlatform": "React",
+			"license": "https://opensource.org/licenses/MIT",
+			"author": {
+				"@type": "Person",
+				"name": "Salvador Bacci",
+				"url": "https://bacci.dev"
+			}
+		})} />
+
 		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
 	</head>
 	<body class="min-h-screen antialiased flex flex-col bg-surface text-text-primary">
 		<slot />

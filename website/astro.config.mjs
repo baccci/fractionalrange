@@ -3,10 +3,13 @@ import tailwindcss from '@tailwindcss/vite'
 import react from '@astrojs/react'
 import svelte from '@astrojs/svelte'
 import starlight from '@astrojs/starlight'
+import sitemap from '@astrojs/sitemap'
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://fractionalrange.bacci.dev',
   integrations: [
+    sitemap(),
     starlight({
       title: '',
       logo: {
