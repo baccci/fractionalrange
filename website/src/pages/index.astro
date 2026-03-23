@@ -35,11 +35,13 @@ import { Footer } from "@/components/footer";
         >
           An opinionated React slider.
         </p>
-        <div class="flex gap-3 items-center flex-wrap justify-center">
+        <div
+          class="flex gap-3 items-center flex-wrap justify-center sm:w-max-[unset] w-full px-5"
+        >
           <GetStartedButton href="/installation/" />
           <div
             class:list={[
-              "relative h-10 bg-[#111] text-sm text-text-secondary rounded-xl px-3 pr-1.5 font-mono flex gap-2 items-center",
+              "relative h-10 bg-[#111] text-sm text-text-secondary rounded-xl px-3 pr-1.5 font-mono flex gap-2 items-center sm:w-auto w-full",
               pseudoBorder({ radius: "xl" }),
             ]}
           >
@@ -47,6 +49,7 @@ import { Footer } from "@/components/footer";
             <ClipboardButton
               title="Copy to clipboard"
               aria-label="copy to clipboard"
+              className="sm:ml-0 ml-auto"
               client:load
             />
           </div>
@@ -63,7 +66,9 @@ import { Footer } from "@/components/footer";
 
     <!-- GitHub star -->
     <div class="mt-14 flex flex-col items-center gap-3">
-      <p class="text-text-muted text-sm tracking-wide">If you liked this project, consider giving it a star</p>
+      <p class="text-text-muted text-sm tracking-wide">
+        If you liked this project, consider giving it a star
+      </p>
       <GitHubStar />
     </div>
   </main>
