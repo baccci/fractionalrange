@@ -1,0 +1,32 @@
+---
+import { pseudoBorder } from '@/utils/pseudo-border'
+import { Spinner } from './spinner'
+---
+
+<div class="flex flex-col items-center gap-5">
+  <!-- Option slider skeleton -->
+  <div class:list={[
+    'relative w-[160px] h-9 rounded-xl bg-[#111] flex items-center justify-center',
+    pseudoBorder({ radius: 'xl' })
+  ]}>
+    <Spinner className="text-white/20 size-4" />
+  </div>
+
+  <!-- Indicator dot placeholder -->
+  <div class="w-1 h-1 rounded-full bg-transparent" />
+
+  <!-- FractionalRange skeleton -->
+  <div class:list={[
+    'relative w-full max-w-[400px] lg:max-w-[480px] bg-[#111] rounded-xl flex items-center justify-center',
+    pseudoBorder({ radius: 'xl' })
+  ]}
+    style="height: 120px;"
+  >
+    <Spinner className="text-white/20 size-5" />
+  </div>
+
+  <!-- Value preview placeholder -->
+  <div class="text-center mt-2">
+    <div class="h-8 w-16 mx-auto" />
+  </div>
+</div>

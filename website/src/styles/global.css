@@ -69,3 +69,8 @@ body {
 .scrollbar-none::-webkit-scrollbar {
   display: none;
 }
+
+/* Hide skeleton once React hydrates the demo section */
+.demo-container:has(astro-island :first-child) .demo-skeleton {
+  display: none;
+}

@@ -12,6 +12,7 @@ import DashedFrame from "@/components/dashed-frame.astro";
 import { pseudoBorder } from "@/utils/pseudo-border";
 import GitHubStar from "@/components/github-star.astro";
 import { Footer } from "@/components/footer";
+import DemoSkeleton from "@/components/demo-skeleton.astro";
 import pkg from "../../../package.json";
 const version = pkg.version;
 ---
@@ -28,7 +29,7 @@ const version = pkg.version;
         <!-- Decorations sit around the reactive title -->
         <div class="relative mb-5">
           <DimensionArc />
-          <HeroTitle client:only="react" />
+          <HeroTitle client:load />
           <RulerTicks />
         </div>
 
@@ -64,7 +65,10 @@ const version = pkg.version;
     <DashedFrame
       class="mt-10 sm:mt-14 small-device:mt-8 w-full max-w-[600px] lg:max-w-[800px] mx-4 p-8 sm:p-12"
     >
-      <DemoSection client:only="react" />
+      <div class="demo-container">
+        <div class="demo-skeleton"><DemoSkeleton /></div>
+        <DemoSection client:only="react" />
+      </div>
     </DashedFrame>
 
     <!-- GitHub star -->
