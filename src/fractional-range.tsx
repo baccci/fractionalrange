@@ -33,6 +33,8 @@ export const FractionalRange: FractionalRangeType = (props) => {
     onStep,
     initialValue,
     value: controlledValue,
+    mouseSensitivity = 1.5,
+    touchSensitivity = 1.5,
     id,
     ...htmlProps
   } = props
@@ -54,6 +56,8 @@ export const FractionalRange: FractionalRangeType = (props) => {
     min,
     max,
     step,
+    mouseSensitivity,
+    touchSensitivity,
   })
 
   const fractionsArray = useMemo(() => getFractions(step, min, max), [step, min, max])

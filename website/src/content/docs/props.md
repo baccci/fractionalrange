@@ -20,6 +20,8 @@ description: Complete API reference for FractionalRange props.
 | `disabled` | `boolean` | `false` | Disables all interaction. |
 | `showIndicator` | `boolean` | `false` | Renders the indicator dot below the slider. |
 | `showShadows` | `boolean` | `false` | Renders gradient edge shadows. |
+| `mouseSensitivity` | `number` | `1.5` | Controls how fast the slider moves when dragging with a mouse. |
+| `touchSensitivity` | `number` | `1.5` | Controls how fast the slider moves when dragging on touch devices. |
 | `fractionClassName` | `string` | — | Class name applied to each fraction tick element. |
 | `className` | `string` | — | Class name for the root container. |
 | `children` | `ReactNode` | — | Custom layout using compound components. Overrides all automatic UI. |

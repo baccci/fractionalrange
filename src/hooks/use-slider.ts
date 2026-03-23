@@ -7,8 +7,6 @@ import { useGlobalDrag } from './use-global-drag'
 const KEYBOARD_SPRING = { stiffness: 200, damping: 26, mass: 1 }
 const DRAG_SPRING = { stiffness: 300, damping: 30, mass: 0.8 }
 
-const MOUSE_SENSITIVITY = 1.5
-const TOUCH_SENSITIVITY = 3
 const KEYBOARD_STEP_MULTIPLIER = 5
 
 interface UseSliderArgs {
@@ -22,6 +20,8 @@ interface UseSliderArgs {
   max: number
   step: number
   disabled: boolean
+  mouseSensitivity: number
+  touchSensitivity: number
 }
 
 export function useSlider({
@@ -35,6 +35,8 @@ export function useSlider({
   min,
   max,
   step,
+  mouseSensitivity,
+  touchSensitivity,
 }: UseSliderArgs) {
   const startValue = _initialValue ?? controlledValue ?? 0
   const initialX = valueToCoordinate({
@@ -121,10 +123,10 @@ export function useSlider({
   const handleGlobalMove = React.useCallback(
     (e: PointerEvent) => {
       if (disabled) return
-      const delta = e.movementX * MOUSE_SENSITIVITY
+      const delta = e.movementX * mouseSensitivity
       setPosition(targetX.current + delta)
     },
-    [disabled, setPosition],
+    [disabled, setPosition, mouseSensitivity],
   )
 
   const handleGlobalUp = React.useCallback(() => {
@@ -153,9 +155,9 @@ export function useSlider({
       const touch = e.touches[0]
       const movementX = touch.pageX - dragTouchRef.current
       dragTouchRef.current = touch.pageX
-      setPosition(targetX.current + movementX * TOUCH_SENSITIVITY)
+      setPosition(targetX.current + movementX * touchSensitivity)
     },
-    [dragging, disabled, setPosition],
+    [dragging, disabled, setPosition, touchSensitivity],
   )
 
   const handleTouchEnd = React.useCallback(() => {

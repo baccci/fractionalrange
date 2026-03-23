@@ -34,6 +34,8 @@ export type FractionalRangeProps = DetailedProps & {
   showIndicator?: boolean
   showShadows?: boolean
   fractionClassName?: string
+  mouseSensitivity?: number
+  touchSensitivity?: number
 } & LabelProps
 
 export type FractionalRangeType = React.FC<FractionalRangeProps> & {
