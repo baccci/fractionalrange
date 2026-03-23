@@ -2,12 +2,6 @@ import { Howl } from 'howler'
 import { useCallback } from 'react'
 import FractionalRangeComponent from 'fractionalrange'
 import { cn } from '@/utils/tailwind-class-merge'
-import { pseudoBorder } from '@/utils/pseudo-border'
-import { notANumber } from '@/utils/not-a-number'
-
-type FractionalRangeProps = {
-  className?: string
-}
 
 const tickSound = new Howl({
   src: ['/tick.mp3'],
@@ -15,7 +9,7 @@ const tickSound = new Howl({
   pool: 5,
 })
 
-export default function FractionalRange({ className }: FractionalRangeProps) {
+export default function FractionalRange() {
   const handleStep = useCallback(() => {
     tickSound.play()
   }, [])
