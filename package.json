@@ -33,6 +33,7 @@
   ],
   "author": "Salvador Bacci",
   "license": "MIT",
+  "homepage": "https://fractionalrange.bacci.dev",
   "repository": "https://github.com/baccci/fractionalrange",
   "devDependencies": {
     "@biomejs/biome": "^2.4.8",
