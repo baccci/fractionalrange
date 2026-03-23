@@ -9,5 +9,7 @@ const { class: className, ...attrs } = Astro.props;
 ---
 
 <header class={cn("p-4", className)} {...attrs}>
-  <Logo width={28} />
+  <a href="/" aria-label="Home" class="w-fit block">
+    <Logo width={28} />
+  </a>
 </header>
