@@ -12,6 +12,8 @@ import DashedFrame from "@/components/dashed-frame.astro";
 import { pseudoBorder } from "@/utils/pseudo-border";
 import GitHubStar from "@/components/github-star.astro";
 import { Footer } from "@/components/footer";
+import pkg from "../../../package.json";
+const version = pkg.version;
 ---
 
 <Layout title="Fractional Range">
@@ -30,10 +32,11 @@ import { Footer } from "@/components/footer";
           <RulerTicks />
         </div>
 
-        <p
-          class="text-text-secondary text-base tracking-wide text-center mb-12"
-        >
+        <p class="text-text-secondary text-base tracking-wide text-center mb-2">
           An opinionated React slider.
+        </p>
+        <p class="text-text-secondary/60 text-xs font-mono text-center mb-12">
+          v{version}
         </p>
         <div
           class="flex gap-3 items-center flex-wrap justify-center sm:w-max-[unset] w-full px-5"
