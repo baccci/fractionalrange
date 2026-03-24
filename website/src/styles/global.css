@@ -53,12 +53,22 @@ body {
 }
 
 /* Option slider: show motion track on desktop, native scroll on touch */
-.touch-hidden { display: flex; }
-.touch-visible { display: none; }
+.touch-hidden {
+  display: flex;
+}
+
+.touch-visible {
+  display: none;
+}
 
 @media (pointer: coarse) {
-  .touch-hidden { display: none; }
-  .touch-visible { display: flex; }
+  .touch-hidden {
+    display: none;
+  }
+
+  .touch-visible {
+    display: flex;
+  }
 }
 
 /* Hide scrollbar on native scroll track */
@@ -66,8 +76,35 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
 .scrollbar-none::-webkit-scrollbar {
   display: none;
+}
+
+.wavy-text {
+  display: inline-flex;
+}
+
+.wavy-char {
+  display: inline-block;
+  animation: wavy-shimmer 3s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.12s);
+}
+
+@keyframes wavy-shimmer {
+
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  30% {
+    opacity: 0.6;
+  }
 }
 
 /* Hide skeleton once React hydrates the demo section */

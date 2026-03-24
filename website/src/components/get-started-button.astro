@@ -20,7 +20,18 @@ const { href } = Astro.props;
   >
     <IconArrow width={10} />
   </div>
-  <div class="size-full flex items-center">Get started</div>
+  <div class="size-full flex items-center">
+    <span class="wavy-text">
+      {Array.from('Get started').map((char, i) => (
+        <span
+          class="wavy-char"
+          style={`--i: ${i}; animation-delay: ${i * 0.12}s`}
+        >
+          {char === ' ' ? '\u00A0' : char}
+        </span>
+      ))}
+    </span>
+  </div>
   <div
     class="absolute top-0 left-0 size-full flex items-center pl-5 bg-fr-orange text-white transform-3d
     translate-y-[101%] sm:group-hover:translate-y-0 transition-transform transform-gpu duration-300 ease-in-out"
