@@ -1,6 +1,6 @@
 import React from 'react'
 import { cn } from '@/utils/tailwind-class-merge'
-import { IconClipboard } from './icons/icon-clipboard'
+import { IconClipboardAnimated } from './icons/icon-clipboard-animated'
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -13,7 +13,6 @@ import {
   PACKAGE_NAME,
   SCRIPTS
 } from '@/constants/npm'
-import { IconCheck } from './icons/icon-check'
 
 type PackageManager = typeof PACKAGE_MANAGERS_LIST[number]
 
@@ -23,11 +22,6 @@ type ClipboardButtonProps = React.ComponentProps<'button'> & {
 
 export const ClipboardButton: React.FC<ClipboardButtonProps> = ({ className, ...props }) => {
   const [icon, setIcon] = React.useState<'copy' | 'done'>('copy')
-
-  const Icon = {
-    copy: IconClipboard,
-    done: IconCheck
-  }[icon]
 
   function toggleIcon() {
     setIcon('done')
@@ -51,7 +45,7 @@ export const ClipboardButton: React.FC<ClipboardButtonProps> = ({ className, ...
         className={cn('focus:outline-none focus-visible:outline-white/20 p-1.5 rounded-lg hover:bg-white/5 transition-colors cursor-pointer', className)}
         {...props}
       >
-        <Icon width={18} />
+        <IconClipboardAnimated width={18} state={icon} />
       </DropdownMenuTrigger>
       <DropdownMenuContent className='z-10 bg-surface-raised/80 backdrop-blur-xl border-none shadow-xl shadow-black/40'>
         <DropdownMenuItem
