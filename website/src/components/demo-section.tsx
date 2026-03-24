@@ -95,7 +95,7 @@ export default function DemoSection({ className }: DemoSectionProps) {
         min={config.min}
         max={config.max}
         step={config.step}
-        initialValue={config.initial}
+        initialValue={storeValues[activeProperty]}
         onChange={handleChange}
         onStep={handleStep}
         activeColor={activeProperty === 'activeColor' ? activeColor : '#ff9646'}
