@@ -13,7 +13,7 @@
   --color-surface-raised: #141414;
   --color-surface-border: #1f1f1f;
   --color-text-primary: #e5e5e5;
-  --color-text-secondary: #737373;
+  --color-text-secondary: #939393;
   --color-text-muted: #525252;
 }
 
@@ -116,14 +116,12 @@ body {
 
 .glow-gradient {
   --border-base: rgba(255, 255, 255, 0.05);
-  background: conic-gradient(
-    from var(--glow-angle),
-    var(--border-base) 0%,
-    var(--border-base) 25%,
-    var(--glow-color) 50%,
-    var(--border-base) 75%,
-    var(--border-base) 100%
-  );
+  background: conic-gradient(from var(--glow-angle),
+      var(--border-base) 0%,
+      var(--border-base) 25%,
+      var(--glow-color) 50%,
+      var(--border-base) 75%,
+      var(--border-base) 100%);
   animation: glow-rotate 3s linear infinite;
 }
 
