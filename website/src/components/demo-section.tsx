@@ -88,6 +88,7 @@ export default function DemoSection({ className }: DemoSectionProps) {
         options={propertyOptions}
         defaultIndex={0}
         onChange={handlePropertyChange}
+        dotColor={activeColor}
       />
 
       <FractionalRangeComponent

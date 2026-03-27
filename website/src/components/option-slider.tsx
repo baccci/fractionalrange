@@ -12,6 +12,7 @@ interface OptionSliderProps<T = string> {
   defaultIndex?: number
   onChange?: (option: SliderOption<T>) => void
   className?: string
+  dotColor?: string
 }
 
 const ITEM_WIDTH = 72
@@ -23,6 +24,7 @@ export function OptionSlider<T = string>({
   defaultIndex = 0,
   onChange,
   className,
+  dotColor,
 }: OptionSliderProps<T>) {
   const [selectedIndex, setSelectedIndex] = useState(defaultIndex)
   const x = useMotionValue(-defaultIndex * ITEM_WIDTH)
@@ -181,7 +183,10 @@ export function OptionSlider<T = string>({
       </div>
 
       {/* Dot indicator */}
-      <div className="w-1 h-1 rounded-full bg-fr-orange" />
+      <div
+        className="w-1 h-1 rounded-full"
+        style={{ backgroundColor: dotColor || 'var(--color-fr-orange)' }}
+      />
     </div>
   )
 }
