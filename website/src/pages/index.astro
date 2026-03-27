@@ -3,7 +3,7 @@ import Layout from "../layouts/layout.astro";
 import DemoSection from "../components/demo-section";
 import { HeroTitle } from "../components/hero-title";
 import { ClipboardButton } from "@/components/clipboard-button";
-import GetStartedButton from "@/components/get-started-button.astro";
+import { CTAGlowWrapper } from "@/components/cta-glow-wrapper";
 import Header from "@/components/header.astro";
 import Background from "@/layouts/background.svelte";
 import DimensionArc from "@/components/dimension-arc.astro";
@@ -42,7 +42,7 @@ const version = pkg.version;
         <div
           class="flex gap-3 items-center flex-wrap justify-center sm:w-max-[unset] w-full px-5"
         >
-          <GetStartedButton href="/installation/" />
+          <CTAGlowWrapper href="/installation/" client:load />
           <div
             class:list={[
               "relative h-10 bg-[#111] text-sm text-text-secondary rounded-xl px-3 pr-1.5 font-mono flex gap-2 items-center sm:w-auto w-full",
