@@ -3,21 +3,21 @@ import { create } from 'zustand'
 interface DemoState {
   weight: number
   hue: number
-  step: number
-  range: number
+  tracking: number
+  blur: number
   setWeight: (v: number) => void
   setHue: (v: number) => void
-  setStep: (v: number) => void
-  setRange: (v: number) => void
+  setTracking: (v: number) => void
+  setBlur: (v: number) => void
 }
 
 export const useDemoStore = create<DemoState>((set) => ({
   weight: 700,
   hue: 55,
-  step: 0.05,
-  range: 1,
+  tracking: -5,
+  blur: 0,
   setWeight: (v) => set({ weight: Math.round(v) }),
   setHue: (v) => set({ hue: Math.round(v) }),
-  setStep: (v) => set({ step: v }),
-  setRange: (v) => set({ range: v }),
+  setTracking: (v) => set({ tracking: v }),
+  setBlur: (v) => set({ blur: v }),
 }))

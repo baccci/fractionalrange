@@ -5,27 +5,27 @@ import { OptionSlider, type SliderOption } from './option-slider'
 import { useDemoStore } from '@/store/demo-store'
 import { cn } from '@/utils/tailwind-class-merge'
 
-type DemoProperty = 'weight' | 'activeColor' | 'step' | 'range'
+type DemoProperty = 'weight' | 'activeColor' | 'tracking' | 'blur'
 
 const propertyOptions: SliderOption<DemoProperty>[] = [
   { label: 'Weight', value: 'weight' },
   { label: 'Color', value: 'activeColor' },
-  { label: 'Precision', value: 'step' },
-  { label: 'Range', value: 'range' },
+  { label: 'Spacing', value: 'tracking' },
+  { label: 'Glow', value: 'blur' },
 ]
 
 const PROPERTY_CONFIGS: Record<DemoProperty, { min: number; max: number; step: number; initial: number }> = {
   weight: { min: 100, max: 900, step: 10, initial: 700 },
   activeColor: { min: 0, max: 360, step: 1, initial: 55 },
-  step: { min: 0.01, max: 0.2, step: 0.01, initial: 0.05 },
-  range: { min: -2, max: 2, step: 0.1, initial: 1 },
+  tracking: { min: -10, max: 10, step: 0.5, initial: -5 },
+  blur: { min: 0, max: 60, step: 1, initial: 0 },
 }
 
-const SETTERS: Record<DemoProperty, keyof Pick<ReturnType<typeof useDemoStore.getState>, 'setWeight' | 'setHue' | 'setStep' | 'setRange'>> = {
+const SETTERS: Record<DemoProperty, keyof Pick<ReturnType<typeof useDemoStore.getState>, 'setWeight' | 'setHue' | 'setTracking' | 'setBlur'>> = {
   weight: 'setWeight',
   activeColor: 'setHue',
-  step: 'setStep',
-  range: 'setRange',
+  tracking: 'setTracking',
+  blur: 'setBlur',
 }
 
 const tickSound = new Howl({
@@ -62,23 +62,23 @@ export default function DemoSection({ className }: DemoSectionProps) {
   const labels: Record<DemoProperty, string> = {
     weight: 'Font Weight',
     activeColor: 'Hue',
-    step: 'Step Size',
-    range: 'Value',
+    tracking: 'Letter Spacing',
+    blur: 'Glow Intensity',
   }
 
   const storeValues: Record<DemoProperty, number> = {
     weight: store.weight,
     activeColor: store.hue,
-    step: store.step,
-    range: store.range,
+    tracking: store.tracking,
+    blur: store.blur,
   }
 
   const formatValue = (prop: DemoProperty, val: number): string => {
     switch (prop) {
       case 'weight': return String(Math.round(val))
       case 'activeColor': return `${Math.round(val)}°`
-      case 'step': return val.toFixed(2)
-      case 'range': return val.toFixed(1)
+      case 'tracking': return `${val > 0 ? '+' : ''}${val.toFixed(1)}px`
+      case 'blur': return `${Math.round(val)}px`
     }
   }
 
