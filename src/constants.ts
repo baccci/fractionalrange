@@ -4,7 +4,7 @@ export const DEFAULT_STEP = 0.1
 export const DEFAULT_COLOR = '#fff'
 export const DEFAULT_ACTIVE_COLOR = '#fff'
 export const DEFAULT_MOUSE_SENSITIVITY = 1.5
-export const DEFAULT_TOUCH_SENSITIVITY = 1.5
+export const DEFAULT_TOUCH_SENSITIVITY = 1
 
 /** Every Nth fraction tick is rendered at the larger size */
 export const LARGE_FRACTION_INTERVAL = 5
