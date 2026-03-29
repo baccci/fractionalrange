@@ -1,13 +1,9 @@
 import { animate, useMotionValue } from 'motion/react'
 import React from 'react'
+import { DRAG_SPRING, KEYBOARD_SPRING, KEYBOARD_STEP_MULTIPLIER } from '../constants'
 import { roundToStep } from '../utils/round-to-step'
 import { coordinateToValue, valueToCoordinate } from '../utils/translations'
 import { useGlobalDrag } from './use-global-drag'
-
-const KEYBOARD_SPRING = { stiffness: 200, damping: 26, mass: 1 }
-const DRAG_SPRING = { stiffness: 300, damping: 30, mass: 0.8 }
-
-const KEYBOARD_STEP_MULTIPLIER = 5
 
 interface UseSliderArgs {
   onChange?: (value: number) => void
@@ -54,6 +50,7 @@ export function useSlider({
   const initialized = React.useRef(false)
   const lastSteppedValue = React.useRef(startValue)
   const targetX = React.useRef(0)
+  const initialTouchX = React.useRef(0)
 
   if (!initialized.current && boundsWidth && fractionWidth) {
     x.set(initialX)
@@ -144,17 +141,15 @@ export function useSlider({
     setDragging(true)
     targetX.current = x.get()
     // Store initial touch position in a ref for delta calculation
-    dragTouchRef.current = e.touches[0].pageX
+    initialTouchX.current = e.touches[0].pageX
   }, [x])
-
-  const dragTouchRef = React.useRef(0)
 
   const handleTouchMove = React.useCallback(
     (e: React.TouchEvent) => {
       if (!dragging || disabled) return
       const touch = e.touches[0]
-      const movementX = touch.pageX - dragTouchRef.current
-      dragTouchRef.current = touch.pageX
+      const movementX = touch.pageX - initialTouchX.current
+      initialTouchX.current = touch.pageX
       setPosition(targetX.current + movementX * touchSensitivity)
     },
     [dragging, disabled, setPosition, touchSensitivity],
@@ -162,7 +157,7 @@ export function useSlider({
 
   const handleTouchEnd = React.useCallback(() => {
     setDragging(false)
-    dragTouchRef.current = 0
+    initialTouchX.current = 0
   }, [])
 
   const handleKeyDown = React.useCallback(

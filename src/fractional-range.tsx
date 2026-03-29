@@ -1,6 +1,6 @@
 import { motion } from 'motion/react'
 import { useMemo } from 'react'
-import { DEFAULT_MAX, DEFAULT_MIN, DEFAULT_STEP } from './constants'
+import { DEFAULT_ACTIVE_COLOR, DEFAULT_COLOR, DEFAULT_MAX, DEFAULT_MIN, DEFAULT_MOUSE_SENSITIVITY, DEFAULT_STEP, DEFAULT_TOUCH_SENSITIVITY } from './constants'
 import type { FractionalRangeContextValue } from './context'
 import { FractionalRangeContext } from './context'
 import { Fractions } from './fractions'
@@ -22,8 +22,8 @@ export const FractionalRange: FractionalRangeType = (props) => {
     className,
     children,
     label,
-    color = '#fff',
-    activeColor = '#fff',
+    color = DEFAULT_COLOR,
+    activeColor = DEFAULT_ACTIVE_COLOR,
     disabled = false,
     fractionClassName,
     step = DEFAULT_STEP,
@@ -33,8 +33,8 @@ export const FractionalRange: FractionalRangeType = (props) => {
     onStep,
     initialValue,
     value: controlledValue,
-    mouseSensitivity = 1.5,
-    touchSensitivity = 1.5,
+    mouseSensitivity = DEFAULT_MOUSE_SENSITIVITY,
+    touchSensitivity = DEFAULT_TOUCH_SENSITIVITY,
     id,
     ...htmlProps
   } = props
