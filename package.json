@@ -19,7 +19,7 @@
   ],
   "scripts": {
     "build": "rm -rf dist && tsup src/index.ts && cp src/styles.css dist/styles.css",
-    "build:link": "bun run build && bun link",
+    "build:link": "bun run build && cp -r dist/ node_modules/.bun/fractionalrange@root/node_modules/fractionalrange/dist/",
     "dev:web": "bun run build:link && rm -rf website/node_modules/.vite && bun --filter website dev --host",
     "test": "vitest",
     "lint": "biome check src/",
