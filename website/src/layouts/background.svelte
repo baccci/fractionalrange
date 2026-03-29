@@ -11,4 +11,4 @@
 <div
   style={`background: ${transformedBackgroundLight}`}
   class="fixed inset-0 z-[-10] transition-colors duration-200 ease-in-out"
-/>
+></div>
