@@ -46,7 +46,8 @@ export function useSlider({
 
   const x = useMotionValue(0)
   const [value, setValue] = React.useState(startValue)
-  const [dragging, setDragging] = React.useState(false)
+  const [mouseDragging, setMouseDragging] = React.useState(false)
+  const isTouchDragging = React.useRef(false)
   const initialized = React.useRef(false)
   const lastSteppedValue = React.useRef(startValue)
   const targetX = React.useRef(0)
@@ -127,36 +128,36 @@ export function useSlider({
   )
 
   const handleGlobalUp = React.useCallback(() => {
-    setDragging(false)
+    setMouseDragging(false)
   }, [])
 
-  useGlobalDrag(dragging, handleGlobalMove, handleGlobalUp)
+  useGlobalDrag(mouseDragging, handleGlobalMove, handleGlobalUp)
 
-  // Pointer down on the slider element starts the drag
-  const handlePointerDown = React.useCallback(() => {
-    setDragging(true)
+  // Pointer down on the slider element starts the drag (mouse only, not touch)
+  const handlePointerDown = React.useCallback((e: React.PointerEvent) => {
+    if (e.pointerType === 'touch') return
+    setMouseDragging(true)
   }, [])
 
   const handleTouchStart = React.useCallback((e: React.TouchEvent) => {
-    setDragging(true)
+    isTouchDragging.current = true
     targetX.current = x.get()
-    // Store initial touch position in a ref for delta calculation
     initialTouchX.current = e.touches[0].pageX
   }, [x])
 
   const handleTouchMove = React.useCallback(
     (e: React.TouchEvent) => {
-      if (!dragging || disabled) return
+      if (!isTouchDragging.current || disabled) return
       const touch = e.touches[0]
       const movementX = touch.pageX - initialTouchX.current
       initialTouchX.current = touch.pageX
       setPosition(targetX.current + movementX * touchSensitivity)
     },
-    [dragging, disabled, setPosition, touchSensitivity],
+    [disabled, setPosition, touchSensitivity],
   )
 
   const handleTouchEnd = React.useCallback(() => {
-    setDragging(false)
+    isTouchDragging.current = false
     initialTouchX.current = 0
   }, [])
 
