@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react'
+import React, { useCallback, useState } from 'react'
 
 /**
  * Returns a callback ref and the element's width.
@@ -8,7 +8,14 @@ import { useCallback, useState } from 'react'
 export function useElementWidth(): [React.RefCallback<HTMLElement>, number] {
   const [width, setWidth] = useState(0)
 
+  const observerRef = React.useRef<ResizeObserver | null>(null)
+
   const ref = useCallback((node: HTMLElement | null) => {
+    if (observerRef.current) {
+      observerRef.current.disconnect()
+      observerRef.current = null
+    }
+
     if (!node) return
     setWidth(node.offsetWidth)
 
@@ -16,10 +23,7 @@ export function useElementWidth(): [React.RefCallback<HTMLElement>, number] {
       setWidth(entry.contentRect.width)
     })
     observer.observe(node)
-
-    // Cleanup is handled by React, when the node unmounts,
-    // the ref callback fires with null and the observer is GC'd
-    // since it's scoped to this closure.
+    observerRef.current = observer
   }, [])
 
   return [ref, width]
