@@ -7,14 +7,15 @@ export interface ValueProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export function Value({ children, ...rest }: ValueProps) {
   const { currentValue } = useFractionalRangeContext()
-  const sign = (currentValue || 1) > 0 ? '+' : '-'
+  const effectiveValue = currentValue ?? 0
+  const prefix = effectiveValue >= 0 ? '+' : '-'
 
   return (
     <div data-value {...rest}>
       {children || (
         <>
-          <span>{sign}</span>
-          <span>{Math.abs(currentValue || 0)}</span>
+          <span>{prefix}</span>
+          <span>{Math.abs(effectiveValue)}</span>
         </>
       )}
     </div>
