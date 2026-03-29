@@ -20,7 +20,7 @@
   "scripts": {
     "build": "rm -rf dist && tsup src/index.ts && cp src/styles.css dist/styles.css",
     "build:link": "bun run build && bun link",
-    "dev:web": "bun run build:link && rm -rf website/node_modules/.vite && bun --filter website dev",
+    "dev:web": "bun run build:link && rm -rf website/node_modules/.vite && bun --filter website dev --host",
     "test": "vitest",
     "lint": "biome check src/",
     "lint:fix": "biome check --write src/"
