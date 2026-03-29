@@ -1,5 +1,5 @@
 import { memo, useMemo } from 'react'
-import { LARGE_FRACTION_INTERVAL } from './constants'
+import { FRACTION_LABEL_DECIMALS, LARGE_FRACTION_INTERVAL } from './constants'
 import { useFractionalRangeContext } from './context'
 import { numberToFixed } from './utils/number-to-fixed'
 import { roundToStep } from './utils/round-to-step'
@@ -24,7 +24,11 @@ export function Fractions({ fractionsArray }: FractionsProps) {
   return <>{children}</>
 }
 
-export default Fractions
+function isFractionInRange(value: number, currentValue: number): boolean {
+  if (value === 0) return true
+  if (currentValue >= 0) return value >= 0 && value <= currentValue
+  return value <= 0 && value >= currentValue
+}
 
 interface FractionProps {
   isLarge: boolean
@@ -34,10 +38,7 @@ interface FractionProps {
 const Fraction = memo(function Fraction({ isLarge, value }: FractionProps) {
   const { color, activeColor, currentValue, fractionClassName } = useFractionalRangeContext()
 
-  const isInRange =
-    value === 0 ||
-    (currentValue >= 0 && value >= 0 && value <= currentValue) ||
-    (currentValue < 0 && value <= 0 && value >= currentValue)
+  const isInRange = isFractionInRange(value, currentValue)
 
   const displayColor = isInRange ? activeColor : color
 
@@ -60,7 +61,7 @@ interface FractionLabelProps {
 }
 
 function FractionLabel({ value, color }: FractionLabelProps) {
-  const display = numberToFixed(value, 3)
+  const display = numberToFixed(value, FRACTION_LABEL_DECIMALS)
   return (
     <span data-fraction-label="" style={{ color }}>
       {display}
